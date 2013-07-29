@@ -1,46 +1,37 @@
+App.Router.map(function() {
 
-Todos.Router.map(function () {
-  this.resource('todos', { path: '/' }, function () {
-    // additional child routes    
-    this.route('active');
-    this.route('completed');
+  this.resource('app', { path: '/' }, function () {
+  
+    this.route("about");
+
+    this.resource('recipes', { path: '/recipes' }, function() {
+      this.route('recipe', { path: '/recipe/:recipe_id' });
+
+      this.route('new', {path: '/recipe/new'});
+    });
+
+    //this.resource('recipe', { path: '/recipes/recipe/:recipe_id' });
+
   });
+
+
 });
 
-Todos.Router.reopen({
-  location: 'history'
-});
-
-Todos.TodosRoute = Ember.Route.extend({
+App.RecipesRoute = Ember.Route.extend({
   model: function () {
-    return Todos.Todo.find();
+    return App.Recipe.find();
   }
 });
 
-Todos.TodosIndexRoute = Ember.Route.extend({
+App.RecipesNewRoute = Ember.Route.extend({
   model: function () {
-    return Todos.Todo.find();
+    return App.Recipe.create;
   }
 });
 
-Todos.TodosActiveRoute = Ember.Route.extend({
-  model: function () {
-    return Todos.Todo.filter(function (todo) {
-      if (!todo.get('isCompleted')) { return true; }
-    });
-  },
-  renderTemplate: function (controller) {
-    this.render('todos/index', {controller: controller});
-  }
-});
-
-Todos.TodosCompletedRoute = Ember.Route.extend({
-  model: function(){
-    return Todos.Todo.filter(function (todo) {
-      if (todo.get('isCompleted')) { return true; }
-    });
-  },
-  renderTemplate: function (controller) {
-    this.render('todos/index', {controller: controller});
+App.RecipesRecipeRoute = Ember.Route.extend({
+  model: function(params) {
+    console.log(App.Recipe.find({id: 'jMWNaYXdHvP23QAXt'}));
+    return App.Recipe.find({_id: 'jMWNaYXdHvP23QAXt'});
   }
 });

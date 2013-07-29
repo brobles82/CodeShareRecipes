@@ -1,0 +1,26 @@
+<div class='row top-bar'>
+  <div class='large-12 columns'>
+
+    <div class='row'>
+      <div class='large-3 columns'>
+        <h1> {{#linkTo "app.index"}}LOGO{{/linkTo}} </h1>
+      </div>
+
+      <div class='large-9 columns'>
+        <dl class="sub-nav right">
+          {{#linkTo "app.index" tagName="dd"}}
+            <a {{bindAttr href="view.href"}}>Home</a>
+          {{/linkTo}}
+      
+          {{#linkTo "recipes" tagName="dd"}}
+            <a {{bindAttr href="view.href"}}>Recipes</a>
+          {{/linkTo}}
+      
+          {{#linkTo "app.about" tagName="dd"}}
+            <a {{bindAttr href="view.href"}}>About</a>
+          {{/linkTo}}
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>

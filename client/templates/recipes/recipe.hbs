@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="large-12 columns">
+  
+    {{view App.RecipeView}}
+
+    <li {{bindAttr class="isEditing:editing"}}>
+    
+      {{#if isEditing}}
+        {{view App.EditRecipeView valueBinding="title"}}
+        {{view Ember.TextField valueBinding="preview"}}
+        
+        <hr>
+        <div class="wmd-panel">
+          <div id="wmd-button-bar"></div>
+            {{view App.NewRecipeView id="wmd-input" autoresize=true valueBinding="body"}}
+          </div>
+  
+          <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+        </div>
+        
+        <button {{action "acceptChanges"}} class="small"> Save </button>
+        <button {{action "discartChanges"}} class="small alert"> Discart Changes </button>
+    {{else}}
+      
+      {{title}}
+      
+      {{{ formatBody body}}}
+      
+      {{#if preview}}
+        {{view App.IframeView srcBinding=preview}}
+      {{/if}}
+      
+      <button {{action "removeTodo"}} class="small alert"> DELETE </button>
+      <button {{action "editTodo"}} class="small"> Edit </button>
+    {{/if}}
+  </li>
+  </div>
+</div>
+
+
+

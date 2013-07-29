@@ -1,5 +1,4 @@
-
-Todos.Store = DS.Store.extend({
+App.Store = DS.Store.extend({
   revision: 12,
-  adapter: DS.MeteorAdapter.create()
+	adapter: DS.MeteorAdapter.create()
 });

@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="large-4 columns">
+    {{#linkTo "recipes.new"}} New Recipe {{/linkTo}}
+
+    <hr>
+
+    <ul class='nav'>
+      {{#each recipe in controller}}
+
+        {{#linkTo "recipes.recipe" recipe tagName="li"}}
+          <a {{bindAttr href="view.href"}}> {{title}} </a>
+        {{/linkTo}}
+      {{/each}}
+    </ul>
+  </div>
+
+  <div class="large-8 columns nav">
+
+    {{outlet}}
+
+  </div>
+</div>
