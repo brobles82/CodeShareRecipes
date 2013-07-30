@@ -1,26 +1,40 @@
-<div class='row top-bar'>
-  <div class='large-12 columns'>
-
-    <div class='row'>
-      <div class='large-3 columns'>
-        <h1> {{#linkTo "app.index"}}LOGO{{/linkTo}} </h1>
+<div class="row-fluid header_bar navbar navbar-fixed-top main-theme">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      
+      <div class="logo">
+        {{#linkTo "app.index" tagName="span"}}
+          <a {{bindAttr href="view.href"}}>
+            <span class="main_logo_text">job
+              <span>B<img alt="" src="css/images/globe.gif" />
+                <i class="icon-globe"></i>
+                ard
+              </span>
+            </span>
+            <p>built with bootstrap</p>
+          </a>
+        {{/linkTo}}
       </div>
 
-      <div class='large-9 columns'>
-        <dl class="sub-nav right">
-          {{#linkTo "app.index" tagName="dd"}}
+      <div class="nav-collapse pull-right">
+        <ul class="nav nav-pills">
+          {{#linkTo "app.index" tagName="li"}}
             <a {{bindAttr href="view.href"}}>Home</a>
           {{/linkTo}}
-      
-          {{#linkTo "recipes" tagName="dd"}}
+          {{#linkTo "recipes" tagName="li"}}
             <a {{bindAttr href="view.href"}}>Recipes</a>
           {{/linkTo}}
-      
-          {{#linkTo "app.about" tagName="dd"}}
+          {{#linkTo "app.about" tagName="li"}}
             <a {{bindAttr href="view.href"}}>About</a>
           {{/linkTo}}
-        </dl>
+        </ul>
       </div>
+      
     </div>
   </div>
 </div>

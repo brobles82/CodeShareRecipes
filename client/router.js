@@ -31,7 +31,6 @@ App.RecipesNewRoute = Ember.Route.extend({
 
 App.RecipesRecipeRoute = Ember.Route.extend({
   model: function(params) {
-    console.log(App.Recipe.find({id: 'jMWNaYXdHvP23QAXt'}));
-    return App.Recipe.find({_id: 'jMWNaYXdHvP23QAXt'});
+    return App.Recipe.find(params.recipe_id);
   }
 });
