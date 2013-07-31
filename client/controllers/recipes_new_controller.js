@@ -18,7 +18,8 @@ submit: function () {
     var recipe = App.Recipe.createRecord({
       title: title,
       body: body,
-      preview: preview
+      preview: preview,
+      date: new Date().getTime()
     });
 
     // Clear the "New Todo" text field

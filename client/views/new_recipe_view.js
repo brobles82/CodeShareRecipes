@@ -1,5 +1,5 @@
 App.NewRecipeView = Ember.TextArea.extend({
-  classNames: ['wmd-input'],
+  classNames: ['wmd-input', 'span12'],
 
   didInsertElement: function () {
       

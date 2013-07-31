@@ -3,6 +3,7 @@ App.Router.map(function() {
   this.resource('app', { path: '/' }, function () {
   
     this.route("about");
+    this.route("tutorials");
 
     this.resource('recipes', { path: '/recipes' }, function() {
       this.route('recipe', { path: '/recipe/:recipe_id' });
@@ -10,11 +11,13 @@ App.Router.map(function() {
       this.route('new', {path: '/recipe/new'});
     });
 
-    //this.resource('recipe', { path: '/recipes/recipe/:recipe_id' });
-
   });
+});
 
-
+App.AppIndexController = Ember.Route.extend({
+  model: function () {
+    return App.Recipe.find({}, {sort: {date: -1}, limit: 5});
+  }
 });
 
 App.RecipesRoute = Ember.Route.extend({
