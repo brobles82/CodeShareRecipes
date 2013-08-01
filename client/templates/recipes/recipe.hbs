@@ -1,68 +1,67 @@
 <div class="container-fluid main_content view-job">
   {{view App.RecipeView}}
-  
+
   <div {{bindAttr class="isEditing:editing"}}>
-    
+
     {{#if isEditing}}
-  
+
       <div class="row-fluid">
 		    <div class="span9">
-			
+
 			    <div class="row-fluid">
 				    <div class="span12">
+            
 					    <br>
 					    <h1>{{view App.EditRecipeView valueBinding="title"}}</h1>
-					    
+
               <div class="row-fluid">
 						    <div class="span12">
 							    <span class="fulltime">Javascript</span>|<span>&nbsp;&nbsp;Posted on Jan 22nd, 2013</span>
-							
+
                   {{#linkTo "recipes" classNameBindings='pull-right'}}
                     <a {{bindAttr href="view.href"}}><span>←&nbsp;</span><span class="lnk-title">Back</span></a>
                   {{/linkTo}}
 						    </div>
 					    </div>
 					    <hr>
-					
+
 					    <div class="row-fluid">
   					    <div class="span12">
-							    
+
                   <div class="wmd-panel">
                     <div id="wmd-button-bar"></div>
                       {{view App.NewRecipeView id="wmd-input" autoresize=true valueBinding="body"}}
                     </div>
-  
+
                     <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
                   </div>
-                  
 						    </div>
 					    </div>
-          
               
-                <hr>
-    			      <h3>JsBin view</h3>
-					      
-                <div class="row-fluid">
-  					      <div class="span12">
-							      {{view Ember.TextField valueBinding="preview"}}
-						      </div>
-					      </div>
+              <hr>
+              <h3>JsBin view</h3>
+              
+              <div class="row-fluid">
+                <div class="span12">
+                  {{view Ember.TextField valueBinding="preview"}}
+                </div>
+              </div>
               
               <br>
 
 				    </div>
 			    </div>
   	    </div>
-    
+
         <div class="span3 ">
 			    <br>
 			    <div class="row-fluid">
-        
+
             <div class="span12">
               <button {{action "acceptChanges"}} class="small"> Save </button>
               <button {{action "discartChanges"}} class="small alert"> Discart Changes </button>
 				    </div>
-      
+
 				    <div class="span12">
 					    <br>
 					    <ul class="nav nav-tabs nav-stacked">
@@ -70,7 +69,7 @@
 						    <li><a href="#"><i class="icon-share"></i> Share</a></li>
 					    </ul>
 				    </div>
-				
+
 				    <div class="span12">
 					    <h3>Similar jobs</h3>
 					    <ul class="similar_jobs">
@@ -79,42 +78,42 @@
 	    					<li><a href="browse.html">UI Developer</a><br><small>by BioWare Intl.</small></li>
 			    		</ul>
 				    </div>
-				
+
 			    </div>
 			  </div>
 		  </div>
-    
+
     {{else}}
   
 	    <div class="row-fluid">
 		    <div class="span9">
-			
+
 			    <div class="row-fluid">
 				    <div class="span12">
 					    <br>
 					    <h1>{{title}}</h1>
-					    
+
               <div class="row-fluid">
 						    <div class="span12">
 							    <span class="fulltime">Javascript</span>|<span>&nbsp;&nbsp;Posted on Jan 22nd, 2013</span>
-							
+
                   {{#linkTo "recipes" classNameBindings='pull-right'}}
                     <a {{bindAttr href="view.href"}}><span>←&nbsp;</span><span class="lnk-title">Back</span></a>
                   {{/linkTo}}
 						    </div>
 					    </div>
 					    <hr>
-					
+
 					    <div class="row-fluid">
   					    <div class="span12">
 							    {{{ formatBody body}}}
 						    </div>
 					    </div>
-          
+
               {{#if preview}}
                 <hr>
     			      <h3>JsBin view</h3>
-					      
+
                 <div class="row-fluid">
   					      <div class="span12">
 							      {{view App.IframeView srcBinding=preview}}

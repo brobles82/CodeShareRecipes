@@ -1,6 +1,6 @@
 App.RecipesNewController = Ember.ObjectController.extend({
-
-submit: function () {
+  
+  submit: function () {
     
     // Get the todo title set by the "New Todo" text field
     var title = this.get('title');

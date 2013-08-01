@@ -1,9 +1,9 @@
-App.IframeView = Ember.View.extend({  
+App.IframeView = Ember.View.extend({
   tagName: 'iframe',
   classNames: ['large-12' ,'columns', 'iframepreview'],
   attributeBindings: ['src','frameborder'],
   frameborder: 0,
-  
+
   didInsertElement: function() {}
 });
 
