@@ -14,15 +14,16 @@ App.Router.map(function() {
   });
 });
 
-App.RecipesRoute = Ember.Route.extend({
-  model: function () {
-    return App.Recipe.find();
-  }
-});
 
 App.AppIndexRoute = Ember.Route.extend({
   model: function () {
     //return App.Recipe.find({}, {sort: {date: -1}, limit: 5});
+    return App.Recipe.find();
+  }
+});
+
+App.RecipesIndexRoute = Ember.Route.extend({
+  model: function () {
     return App.Recipe.find();
   }
 });
