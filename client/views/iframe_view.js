@@ -1,6 +1,6 @@
 App.IframeView = Ember.View.extend({
   tagName: 'iframe',
-  classNames: ['large-12' ,'columns', 'iframepreview'],
+  classNames: ['span12', 'iframepreview'],
   attributeBindings: ['src','frameborder'],
   frameborder: 0,
 
