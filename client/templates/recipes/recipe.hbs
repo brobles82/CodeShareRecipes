@@ -48,20 +48,41 @@
                   {{view Ember.TextField valueBinding="preview"}}
                 </div>
               </div>
+
+              {{#if preview}}
+                <hr>
+    			      <h3>JsBin Preview</h3>
+
+                <div class="row-fluid">
+  					      <div class="span12">
+							      {{view App.IframeView srcBinding=preview}}
+						      </div>
+					      </div>
+              {{/if}}
               
               <br>
 
 				    </div>
 			    </div>
-  	    </div>
+  	    
 
         <div class="span3 ">
 			    <br>
 			    <div class="row-fluid">
 
             <div class="span12">
-              <button {{action "acceptChanges"}} class="small"> Save </button>
-              <button {{action "discartChanges"}} class="small alert"> Discart Changes </button>
+            	<div class="row-fluid">
+            		
+            		<div class='span6'>
+									<a {{action "acceptChanges"}} class="btn btn-primary btn-large post_job apply_now scroll">Save</a>
+            		</div>
+								<div class='span6'>
+									<a {{action "discartChanges"}} style="background: #d9534f;" class="btn btn-large post_job apply_now scroll">Discard</a>
+            		</div>
+            	
+            	</div>
+            	<br><br>
+            	
 				    </div>
 
 				    <div class="span12">

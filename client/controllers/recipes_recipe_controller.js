@@ -23,7 +23,7 @@ App.RecipesRecipeController = Ember.ObjectController.extend({
     
     acceptChanges: function () {
       if (!this.get('title').trim() || !this.get('body').trim()) {
-
+        this.get('transaction').rollback();
         alert('Cant be blank');
         return;
       }
