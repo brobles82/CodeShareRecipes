@@ -11,7 +11,7 @@ App.RecipesRecipeController = Ember.ObjectController.extend({
     },
 
     editTodo: function () {
-        this.set('isEditing', true);
+      this.set('isEditing', true);
     },
     
     removeTodo: function () {

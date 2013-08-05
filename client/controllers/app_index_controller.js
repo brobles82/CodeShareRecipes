@@ -1,3 +1,3 @@
-App.RecipesController = Ember.ArrayController.extend({
+App.AppIndexController = Ember.ArrayController.extend({
   itemController: 'recipes_recipe'
 });
