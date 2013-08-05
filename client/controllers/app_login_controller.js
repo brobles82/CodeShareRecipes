@@ -7,19 +7,19 @@ App.AppLoginController = Ember.ObjectController.extend({
       //if (!name.trim()) { return; }
       console.log(username);
       
-    var useremail = this.get('useremail');
+    var email = this.get('email');
       //if (!email.trim()) { return; }
       console.log(useremail);
 
     // Create the new Todo model
     var user = App.User.createRecord({
       username: 'username',
-      useremail: 'useremail'
+      useremail: 'email'
     });
 
     // Clear the "New Todo" text field
     this.set('username', '');
-    this.set('useremail', '');
+    this.set('email', '');
 
     // Save the new model
     user.save();
