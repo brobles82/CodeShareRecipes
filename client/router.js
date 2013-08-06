@@ -40,7 +40,6 @@ App.RecipesRecipeRoute = Ember.Route.extend({
   }
 });
 
-
 //User stuff
 
 App.AppLoginRoute = Ember.Route.extend({
@@ -48,3 +47,5 @@ App.AppLoginRoute = Ember.Route.extend({
     return App.User.create;
   }
 });
+
+

@@ -1,38 +1,34 @@
-ModelUsers = new Meteor.Collection('users');
+Users = new Meteor.Collection('users');
 
 Meteor.methods({
   'User.find': function (selector, options) {
     // perform checks
 
     // Be sure to call .fetch() to return the records
-    return ModelUsers.find(selector, options).fetch();
+    return Meteor.users.find(selector, options).fetch();
   },
 
   'User.findOne': function (selector, options) {
     // perform checks
 
-    return ModelUsers.findOne(selector, options);
+    return Meteor.users.findOne(selector, options);
   },
 
   'User.insert': function (doc, options) {
     // perform checks
 
-    return ModelUsers.insert(doc);
+    return Meteor.users.insert(doc);
   },
 
   'User.update': function (selector, modifier, options) {
     // perform checks
 
-    return ModelUsers.update(selector, modifier, options);
+    return Meteor.users.update(selector, modifier, options);
   },
 
   'User.remove': function (selector) {
     // perform checks
 
-    return ModelUsers.remove(selector);
+    return Meteor.users.remove(selector);
   }
 });
-
-if (Meteor.isServer) {
-  
-}

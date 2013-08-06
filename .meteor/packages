@@ -10,3 +10,5 @@ ember-handlebars
 ember
 ember-data
 ember-precompile
+accounts-password
+accounts-base
