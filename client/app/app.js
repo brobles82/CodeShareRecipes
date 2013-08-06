@@ -17,5 +17,5 @@ Ember.Handlebars.helper('formatBody', function(value) {
 
 
 Ember.Handlebars.helper('isLoged', function() {
-	return Meteor.user();
+	return false;
 });

@@ -18,7 +18,6 @@ App.Router.map(function() {
 
 App.AppIndexRoute = Ember.Route.extend({
   model: function () {
-    //return App.Recipe.find({}, {sort: {date: -1}, limit: 5});
     return App.Recipe.find();
   }
 });
