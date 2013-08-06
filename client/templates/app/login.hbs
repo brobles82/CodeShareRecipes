@@ -2,17 +2,75 @@
   <div class="row-fluid">
 	  <div class="span9">
 		  <div class="row-fluid">
-  	    
-        {{#formFor User}}
 
-        	{{input username}}
-  				{{input password}}
-  				{{submit class='btn btn-primary btn-success'}}
-				
-				{{/formFor}}
+{{#if isLoged }}
+		  	
+		  	<h1> Log in </h1>
+		  	<form {{action "login" on='submit'}}>
+  				
+  				<div class="control-group">
+    				<div class="control-label">
+      				<label>Username</label>
+    				</div>
 
-				<br>
-        
+    				<div class="controls">
+      				{{input value=username type="text"}}
+    				</div>
+  				</div>
+
+  				<div class="control-group">
+    				<div class="control-label">
+      				<label>Password</label>
+    				</div>
+
+    				<div class="controls">
+      				{{input value=password type="password"}}
+    				</div>
+  				</div>
+
+  				<button type="submit" class="btn">Log in!</button>
+				</form>
+
+<hr>
+
+				<h1> Signup </h1>
+		  	<form {{action "signup" on='submit'}}>
+  				
+  				<div class="control-group">
+    				<div class="control-label">
+      				<label>Username</label>
+    				</div>
+
+    				<div class="controls">
+      				{{input value=username type="text"}}
+    				</div>
+  				</div>
+
+  				<div class="control-group">
+    				<div class="control-label">
+      				<label>Password</label>
+    				</div>
+
+    				<div class="controls">
+      				{{input value=password type="password"}}
+    				</div>
+  				</div>
+
+  				<div class="control-group">
+    				<div class="control-label">
+      				<label>Email</label>
+    				</div>
+
+    				<div class="controls">
+      				{{input value=email type="text"}}
+    				</div>
+  				</div>
+
+  				<button type="submit" class="btn">Signup</button>
+				</form>
+        {{else}}
+        	You are logged in !!
+        {{/if}}
 		  </div>
     </div>
   </div>

@@ -48,11 +48,3 @@ App.AppLoginRoute = Ember.Route.extend({
     return App.User.create;
   }
 });
-
-App.AppSignupRoute = Ember.Route.extend({
-  model: function () {
-    return App.User.create;
-  }
-});
-
-

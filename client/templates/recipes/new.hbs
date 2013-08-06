@@ -5,8 +5,9 @@
 			<br>
 			
 			<h2><i class="icon-suitcase"></i>&nbsp;&nbsp;Post a new Recipe</h2>
-			
-			{{#formFor Recipe}}
+
+
+			<form {{action "submit" on='submit'}}>
 				<h3>Recipe Details</h3>
 				
         <div class="row-fluid">
@@ -15,7 +16,7 @@
 						<div class="control-group">
 							<label class="control-label">Recipe title</label>
 							<div class="controls">
-                {{input title as=text inputConfig="class:span12"}}
+								{{input value=title type="text" class='span12'}}
 								<span class="help-block">Enter the recipe title</span>
 							</div>
 						</div>
@@ -27,7 +28,7 @@
 						<div class="control-group">
 							<label class="control-label">Jsbin Links</label>
 							<div class="controls">
-                {{input preview as=text inputConfig="class:span12"}}
+								{{input value=preview type="text" class='span12'}}
 								<span class="help-block">Do you have a Jsbin for this recipe?</span>
 							</div>
 						</div>
@@ -64,14 +65,13 @@
 				<div class="row-fluid">
 					
           <div class="span12">
-  					{{submit class='btn btn-primary btn-success'}}		
+  					<button type="submit" class="btn">Create</button>
 					</div>
 
 				</div>
-				
-        
+			</form>
+
         <br><br>
-			{{/formFor}}
 			
 		</div>
 		
