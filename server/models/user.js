@@ -1,5 +1,3 @@
-Users = new Meteor.Collection('users');
-
 Meteor.methods({
   'User.find': function (selector, options) {
     // perform checks
@@ -8,11 +6,11 @@ Meteor.methods({
     return Meteor.users.find(selector, options).fetch();
   },
 
-  'User.findOne': function (selector, options) {
-    // perform checks
+  // 'User.findOne': function (selector, options) {
+  //   // perform checks
 
-    return Meteor.users.findOne(selector, options);
-  },
+  //   return Meteor.users.findOne(selector, options);
+  // },
 
   'User.insert': function (doc, options) {
     // perform checks

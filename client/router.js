@@ -4,6 +4,7 @@ App.Router.map(function() {
   
     this.route("about");
     this.route("login");
+    this.route("signup");
 
     this.resource('recipes', { path: '/recipes' }, function() {
       this.route('recipe', { path: '/recipe/:recipe_id' });
@@ -43,6 +44,12 @@ App.RecipesRecipeRoute = Ember.Route.extend({
 //User stuff
 
 App.AppLoginRoute = Ember.Route.extend({
+  model: function () {
+    return App.User.create;
+  }
+});
+
+App.AppSignupRoute = Ember.Route.extend({
   model: function () {
     return App.User.create;
   }

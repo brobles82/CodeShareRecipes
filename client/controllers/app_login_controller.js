@@ -1,36 +1,22 @@
 App.AppLoginController = Ember.ObjectController.extend({
-  
+
   submit: function () {
+    Meteor.loginWithPassword(this.get('username'), this.get('password'));
 
-    var options = {};
-
-    // Get the todo title set by the "New Todo" text field
-    options.username = this.get('username');
-      //if (!name.trim()) { return; }
-      console.log(username);
-
-    options.password = this.get('password');
-      //if (!name.trim()) { return; }
-      console.log(username);
+    if(Meteor.userId()) {
       
-    options.email = this.get('email');
-      //if (!email.trim()) { return; }
-      console.log(email);
+      this.set('username', '');
+      this.set('password', '');
+      this.set('email', '');
+      this.transitionToRoute('recipes');
+      
+      if(Meteor.userId())
+        alert(Meteor.userId());
 
-    Accounts.createUser(options);
+    } else {
+      alert('User Dont Exist');
+    }
 
-    // // Create the new Todo model
-    // var user = App.User.createRecord({
-    //   username: username,
-    //   password: password,
-    //   email: email
-    // });
-
-    // this.set('username', '');
-    // this.set('email', '');
-
-    // Save the new model
-    //console.log(user.save());
-    this.transitionToRoute('recipes');
   }
+  
 });
