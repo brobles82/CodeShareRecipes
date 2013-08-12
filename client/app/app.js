@@ -14,8 +14,3 @@ Ember.Handlebars.helper('formatBody', function(value) {
                 
     return safeConverter.makeHtml(value).htmlSafe();
 });
-
-
-Ember.Handlebars.helper('isLoged', function() {
-	return false;
-});

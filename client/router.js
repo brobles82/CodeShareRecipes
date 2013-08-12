@@ -16,6 +16,25 @@ App.Router.map(function() {
 });
 
 
+App.ConfirmLogingRoute = Ember.Route.extend({
+  setupController: function(controller) {
+    controller.set('token', Meteor.user());
+    controller.reset();
+  }
+});
+
+
+App.AuthenticatedRoute = Ember.Route.extend({
+
+  beforeModel: function(transition) {
+    if (!Meteor.user()) {
+      alert('You must log in!');
+      App.Router.router.handleURL('app.login');
+    }
+  }
+});
+
+
 App.AppIndexRoute = Ember.Route.extend({
   model: function () {
     return App.Recipe.find();
@@ -28,7 +47,7 @@ App.RecipesIndexRoute = Ember.Route.extend({
   }
 });
 
-App.RecipesNewRoute = Ember.Route.extend({
+App.RecipesNewRoute = App.AuthenticatedRoute.extend({
   model: function () {
     return App.Recipe.create;
   }
@@ -40,9 +59,12 @@ App.RecipesRecipeRoute = Ember.Route.extend({
   }
 });
 
-//User stuff
 
-App.AppLoginRoute = Ember.Route.extend({
+App.AppAboutRoute = Ember.Route.extend({});
+
+
+//User stuff
+App.AppLoginRoute = App.ConfirmLogingRoute.extend({
   model: function () {
     return App.User.create;
   }
