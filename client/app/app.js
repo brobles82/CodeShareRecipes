@@ -14,3 +14,8 @@ Ember.Handlebars.helper('formatBody', function(value) {
                 
     return safeConverter.makeHtml(value).htmlSafe();
 });
+
+
+Ember.Handlebars.helper('canManage', function(value) {
+	return (Meteor.userId() == value) ? true: false;
+});

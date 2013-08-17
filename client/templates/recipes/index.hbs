@@ -10,8 +10,9 @@
 			
 		<div class="row-fluid">
 			<div class="span5">
-				<input type="text" class="span12" placeholder="What recipe are you looking for?">
-			</div>				
+			{{view Ember.TextField class="span12" valueBinding="searchTerm" placeholder="What recipe are you looking for?"}}
+			</div>
+	
 			
 			<div class="span1 browse_search">
 				<a class="btn btn-primary btn-large btn-success" href="browse.html">Search</a>
@@ -31,11 +32,11 @@
 			<tbody>
 				<table class="table table-striped">
 					<tbody>
-						{{#each recipe in controller}}
+						{{#each recipe in filteredContent}}
 							<tr>
 								<td> <span class="label label-warning">Javascript</span> </td>
 								<td>
-									<strong>{{#linkTo 'recipes.recipe' recipe}} {{title}} {{/linkTo}}</strong><br>
+									<strong>{{#linkTo 'recipes.recipe' recipe}} {{recipe.title}} {{/linkTo}}</strong><br>
 									Posted by <a href="#">Teleworm</a>
 								</td>
 								<td>Emberjs<br>Javascript, html css</td>

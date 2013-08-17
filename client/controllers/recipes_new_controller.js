@@ -14,11 +14,15 @@ App.RecipesNewController = Ember.ObjectController.extend({
       preview = "";
     }
 
+    var userId = Meteor.userId();
+      if (!userId.trim()) { return; }
+
     // Create the new Todo model
     var recipe = App.Recipe.createRecord({
       title: title,
       body: body,
       preview: preview,
+      userid: userId,
       date: new Date().getTime()
     });
 

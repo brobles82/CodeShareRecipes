@@ -1,25 +1,23 @@
 <div class="view-job">
+	{{view App.RecipeView}}
 
-  {{view App.RecipeView}}
+	<div {{bindAttr class="isEditing:editing"}}>
 
-  <div {{bindAttr class="isEditing:editing"}}>
+		{{#if isEditing}}
+			<div class="row-fluid">
+				<div class="span9">
 
-    {{#if isEditing}}
-
-      <div class="row-fluid">
-		    <div class="span9">
-
-			    <div class="row-fluid">
-				    <div class="span12">
+					<div class="row-fluid">
+						<div class="span12">
             
-					    <br>
-					    <h1>{{view App.EditRecipeView valueBinding="title"}}</h1>
+							<br>
+							<h1>{{view App.EditRecipeView valueBinding="title"}}</h1>
 
-              <div class="row-fluid">
-						    <div class="span12">
-							    <span class="fulltime">Javascript</span>|<span>&nbsp;&nbsp;Posted on Jan 22nd, 2013</span>
+							<div class="row-fluid">
+								<div class="span12">
+									<span class="fulltime">Javascript</span>|<span>&nbsp;&nbsp;Posted on Jan 22nd, 2013</span>
 
-							    {{#linkTo recipes.index  classNames="pull-right" }}
+									{{#linkTo recipes.index  classNames="pull-right" }}
 										<span>←&nbsp;</span><span class="lnk-title">Back</span>
 									{{/linkTo}}
 
@@ -151,15 +149,14 @@
         <div class="span3 ">
 			    <br>
 			    <div class="row-fluid">
-        
-            <div class="span12">
+						{{#if canManage}}
+							<div class="span12">
+								<a {{action "editTodo"}} class="span6 btn btn-primary btn-large post_job apply_now scroll">Edit</a>
+								<br><br>
+								<a {{action "removeTodo"}} style="background: #d9534f;" class="btn btn-large post_job apply_now scroll">Delete</a>
+							</div>
+						{{/if}}
 
-            	<a {{action "editTodo"}} class="span6 btn btn-primary btn-large post_job apply_now scroll">Edit</a>
-            	<br><br>
-            	<a {{action "removeTodo"}} style="background: #d9534f;" class="btn btn-large post_job apply_now scroll">Delete</a>
-
-				    </div>
-      
 				    <div class="span12">
 					    <br>
 					    <ul class="nav nav-tabs nav-stacked">
