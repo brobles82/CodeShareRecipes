@@ -28,9 +28,17 @@
           {{#linkTo "recipes" tagName="li"}}
             <a {{bindAttr href="view.href"}}>Recipes</a>
           {{/linkTo}}
-          {{#linkTo "app.login" tagName="li"}}
-            <a {{bindAttr href="view.href"}}>Login</a>
-          {{/linkTo}}
+
+          {{#if controllers.appLogin.token}}
+            {{#linkTo "app.login" tagName="li"}}
+              <a {{bindAttr href="view.href"}}>Account</a>
+            {{/linkTo}}
+          {{else}}
+            {{#linkTo "app.login" tagName="li"}}
+              <a {{bindAttr href="view.href"}}>Login</a>
+            {{/linkTo}}
+          {{/if}}
+          
           {{#linkTo "app.about" tagName="li"}}
             <a {{bindAttr href="view.href"}}>About</a>
           {{/linkTo}}

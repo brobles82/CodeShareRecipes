@@ -18,31 +18,26 @@ App.AppLoginController = Ember.Controller.extend({
   
   logout: function() {
     Meteor.logout();
-      this.set('token', '');
-      this.transitionToRoute('app.index');
+    this.set('token', '');
+    this.transitionToRoute('app.index');
   },
 
   login: function () {
+    var self = this;
     Meteor.loginWithPassword(this.get('username'), this.get('password'), function(err){
       if (err) {
         alert('User Dont Exist');
       } else {
-        alert(Meteor.userId());
-        //Here is the problem, I have to log 2 times for make it work
-        App.set('token', Meteor.userId()); 
-        //App.Router.router.handleURL('recipes.index');
+        self.set('token', Meteor.userId());
+        self.set('username', '');
+        self.set('password', '');
+        App.Router.router.handleURL('recipes.index');
       }
     });
-    this.set('username', '');
-    this.set('password', '');
-    
-    this.set('token', Meteor.userId());
-
-    
   },
   
   signup: function () {
-
+    var self = this;
     var options = {};
 
     //Username validation
@@ -76,9 +71,9 @@ App.AppLoginController = Ember.Controller.extend({
           if (err) {
             alert('User Dont Exist');
           } else {
-            App.set('newusername', '');
-            App.set('newpassword', '');
-            App.set('token', Meteor.userId());
+            self.set('newusername', '');
+            self.set('newpassword', '');
+            self.set('token', Meteor.userId());
             App.Router.router.handleURL('recipes.index');
           }
         });
