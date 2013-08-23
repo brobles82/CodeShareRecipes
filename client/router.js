@@ -15,25 +15,28 @@ App.Router.map(function() {
   });
 });
 
-
-App.ConfirmLogingRoute = Ember.Route.extend({
-  setupController: function(controller) {
-    controller.set('token', Meteor.user());
-    controller.reset();
-  }
-});
-
-
 App.AuthenticatedRoute = Ember.Route.extend({
 
   beforeModel: function(transition) {
-    if (!Meteor.user()) {
-      alert('You must log in!');
-      App.Router.router.handleURL('app.login');
+    if (!this.controllerFor('appLogin').get('token')) {
+      this.redirectToLogin(transition);
     }
+  },
+
+  redirectToLogin: function(transition) {
+    alert('You must log in!');
+
+    var loginController = this.controllerFor('appLogin');
+    loginController.set('attemptedTransition', transition);
+    this.transitionTo('app.login');
   }
 });
 
+App.AppLogingRoute = Ember.Route.extend({
+  setupController: function(controller) {
+    controller.reset();
+  }
+});
 
 App.AppIndexRoute = Ember.Route.extend({
   model: function () {
@@ -56,16 +59,5 @@ App.RecipesNewRoute = App.AuthenticatedRoute.extend({
 App.RecipesRecipeRoute = Ember.Route.extend({
   model: function(params) {
     return App.Recipe.find(params.recipe_id);
-  }
-});
-
-
-App.AppAboutRoute = Ember.Route.extend({});
-
-
-//User stuff
-App.AppLoginRoute = App.ConfirmLogingRoute.extend({
-  model: function () {
-    return App.User.create;
   }
 });

@@ -10,19 +10,37 @@ App.AppLoginController = Ember.Controller.extend({
     });
   },
 
-  login: function () {
+  token: localStorage.token,
+  
+  tokenChanged: function() {
+    localStorage.token = this.get('token');
+  }.observes('token'),
+  
+  logout: function() {
+    Meteor.logout();
+      this.set('token', '');
+      this.transitionToRoute('app.index');
+  },
 
+  login: function () {
     Meteor.loginWithPassword(this.get('username'), this.get('password'), function(err){
       if (err) {
         alert('User Dont Exist');
       } else {
-        App.set('username', '');
-        App.set('password', '');
-        App.Router.router.handleURL('recipes.index');
+        alert(Meteor.userId());
+        //Here is the problem, I have to log 2 times for make it work
+        App.set('token', Meteor.userId()); 
+        //App.Router.router.handleURL('recipes.index');
       }
     });
-  },
+    this.set('username', '');
+    this.set('password', '');
+    
+    this.set('token', Meteor.userId());
 
+    
+  },
+  
   signup: function () {
 
     var options = {};
@@ -60,16 +78,11 @@ App.AppLoginController = Ember.Controller.extend({
           } else {
             App.set('newusername', '');
             App.set('newpassword', '');
+            App.set('token', Meteor.userId());
             App.Router.router.handleURL('recipes.index');
           }
         });
       }
     });
-  },
-
-  logout: function () {
-    Meteor.logout();
-    this.transitionToRoute('app.index');
   }
-
 });

@@ -1,4 +1,5 @@
 App.RecipesNewController = Ember.ObjectController.extend({
+  needs:['appLogin'],
   
   submit: function () {
     
