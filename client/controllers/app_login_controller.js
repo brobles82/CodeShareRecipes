@@ -72,6 +72,7 @@ App.AppLoginController = Ember.Controller.extend({
             alert('User Dont Exist');
           } else {
             self.set('newusername', '');
+            self.set('newemail', '');
             self.set('newpassword', '');
             self.set('token', Meteor.userId());
             App.Router.router.handleURL('recipes.index');
