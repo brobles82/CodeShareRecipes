@@ -80,5 +80,9 @@ App.AppLoginController = Ember.Controller.extend({
         });
       }
     });
-  }
+  },
+
+  username: function() {
+    if(Meteor.user()) return Meteor.user().username;
+  }.property()
 });

@@ -1,72 +1,46 @@
 <div class="container-fluid home_content">
-
+	
 	<div class="row-fluid hero_bar"><!-- start hero -->
+		
 		<div class="span12">
 			<div class="row-fluid">
-				<br />
+				<br>
 				
 				<div class="span9 offset1 home-hero">
-						
+							
 					<div class="row-fluid">
-						<div class="span11 offset1">
-							<div class="row-fluid">
-								<div class="span5">
-									<h3>I'm looking for...</h3>
-								</div>				
-								<div class="span5">
-									<h3>Location</h3>
-								</div>
-							</div>
-									
-							<div class="row-fluid">
-										
-								<div class="span5">
-									<input type="text" class="span12 search_input" placeholder="What type of job are you looking for?">
-								</div>
-										
-								<div class="span4">
-									<select class="home_select">
-										<option value="0">London</option>
-										<option value="0">Paris</option>
-									</select>							
-								</div>
-										
-								<div class="span2">
-									<a class="btn btn-primary btn-success search_btn" href="browse.html">Search</a>
-								</div>
-										
-							</div>
+						<div class="span11 offset2">
+							<h2 style="color: rgb(2, 2, 146);"> Find here simple working code recipes and share them </h2>
 						</div>
 					</div>
-					<br />
+					
+					<br>
 					
 					<div class="row-fluid">
-
 						<div class="span12">
 									
 							<div class="row-fluid">
 								<div class="span3 offset1">
-									<h3>Post a Recipe</h3>
-									{{#linkTo recipes.index}} Fast and free, with upgrade options {{/linkTo}}
+									<h3>MarkDown Extra</h3>
+									{{#linkTo 'recipes'}}Create rich recipes with markdown{{/linkTo}}<br>
 								</div>
 								<div class="span3 offset1">
-									<h3>Browse jobs</h3>
-									<a href="browse.html">Find the perfect job for you</a><br />
+									<h3>Simple Powerfull</h3>
+									{{#linkTo 'recipes'}}Simple recipes that work, not complex examples{{/linkTo}}<br>
 								</div>					
 								<div class="span3 offset1">
-									<h3>Register</h3>
-									<a href="register.html">Apply for jobs quickly and easily</a><br />
+									<h3>Register now</h3>
+									{{#linkTo 'app.login'}} It's free and you can start coding recipes and share {{/linkTo}}<br>
 								</div>
 							</div>
 									
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
 	</div>
-</div><!-- end hero -->
+</div>
 
 <div class="container-fluid home_main_content">
 	<div class="row-fluid">
@@ -82,7 +56,6 @@
 						<tbody>
 							{{#each recipe in lastRecipes}}
 								<tr>
-									<td> <span class="label label-warning">Javascript</span> </td>
 									<td>
 										<strong>{{#linkTo 'recipes.recipe' recipe}} {{recipe.title}} {{/linkTo}}</strong><br>
 										Posted by <a href="#">Teleworm</a>
@@ -91,38 +64,25 @@
 									<td> 10 Jan 2013</td>
 								</tr>
 							{{/each}}
-
 						</tbody>
 					</table>
+
 				</div>
 			
 			</div>
 		</div>
 
 	
-	<div class="span3">
-		<h2>&nbsp;</h2>
-		<div class="row-fluid">
-			<div class="span12 center">
-				{{#linkTo recipes.new  classNames="btn btn-primary btn-large post_job" }}
-					Post a Recipe<br /><small>(it's free!)</small>
-				{{/linkTo}}
+		<div class="span3">
+			<h2>&nbsp;</h2>
+			<div class="row-fluid">
+				<div class="span12 center">
+					{{#linkTo recipes.new  classNames="btn btn-primary btn-large post_job" }}
+						Post a Recipe<br /><small>(it's free!)</small>
+					{{/linkTo}}
+				</div>
 			</div>
-		</div>
-		<br />
-		
-		<h2>Stay connected</h2>
-		<div class="row-fluid">
-			<div class="span12">
-				<ul class="social-icons">
-					<li><a href="#"><i class="icon-facebook-sign icon-2x"></i></a></li>
-					<li><a href="#"><i class="icon-twitter-sign icon-2x"></i></a></li>
-					<li><a href="#"><i class="icon-google-plus-sign icon-2x"></i></a></li>
-					<li><a href="#"><i class="icon-linkedin-sign icon-2x"></i></a></li>
-					<li><a href="#"><i class="icon-pinterest-sign icon-2x"></i></a></li>
-				</ul>
-				<p>Stay connected to the latest jobs, events and career advice.</p>
-			</div>			
+			<br />
 		</div>
 	</div>
 </div>

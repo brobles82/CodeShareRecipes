@@ -10,7 +10,7 @@
 			
 		<div class="row-fluid">
 			<div class="span5">
-			{{view Ember.TextField class="span12" valueBinding="searchTerm" placeholder="What recipe are you looking for?"}}
+			{{view Ember.TextField class="span12" valueBinding="searchTerm" placeholder="What code recipe are you looking for?"}}
 			</div>
 	
 			
@@ -26,7 +26,7 @@
 <div class="row-fluid">
 	<div class="span9">
 		
-		<h2>914 recipes listings found</h2>
+		<h2>Recipes listings found</h2>
 		
 		<table class="table table-striped">
 			<tbody>
@@ -34,7 +34,6 @@
 					<tbody>
 						{{#each recipe in filteredContent}}
 							<tr>
-								<td> <span class="label label-warning">Javascript</span> </td>
 								<td>
 									<strong>{{#linkTo 'recipes.recipe' recipe}} {{recipe.title}} {{/linkTo}}</strong><br>
 									Posted by <a href="#">Teleworm</a>
@@ -48,23 +47,6 @@
 				</table>
 			</tbody>
 		</table>
-			
-		<div class="pagination pull-right">
-			<ul>
-				<li>
-					<a href="#">Prev</a>
-				</li>
-				<li class="active">
-					<a href="#">1</a>
-				</li>
-				<li>
-					<a href="#">2</a>
-				</li>
-				<li>
-					<a href="#">Next</a>
-				</li>
-			</ul>
-		</div>
 	</div>
 		
 	<div class="span3">
@@ -76,14 +58,6 @@
 					Post a Recipe<br /><small>(it's free!)</small>
 				{{/linkTo}}
 			</div>
-			
-			<div class="span12">
-				<br><br>
-				<h3>Email me</h3>
-				<p>Send me new recipes to my inbox every day</p>
-				<input type="text" class="span12" placeholder="Enter your email">
-				<a class="btn btn-primary btn-small pull-right" href="register.html">Email me recipes</a>
-				<br><br><br><br>
 			</div>
 		</div>
 	</div>
