@@ -24,6 +24,7 @@ App.RecipesNewController = Ember.ObjectController.extend({
       body: body,
       preview: preview,
       userid: userId,
+      userName: Meteor.user().username,
       date: new Date().getTime()
     });
 

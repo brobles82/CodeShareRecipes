@@ -17,9 +17,10 @@ App.AppLoginController = Ember.Controller.extend({
   }.observes('token'),
   
   logout: function() {
-    Meteor.logout();
-    this.set('token', '');
-    this.transitionToRoute('app.index');
+    if (confirm('Sure you want logout ?')) {
+      Meteor.logout();
+      this.set('token', '');
+    }
   },
 
   login: function () {
@@ -54,6 +55,7 @@ App.AppLoginController = Ember.Controller.extend({
         return; 
       }
     
+    //email validation
     options.email = this.get('newemail');
       var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -80,9 +82,5 @@ App.AppLoginController = Ember.Controller.extend({
         });
       }
     });
-  },
-
-  username: function() {
-    if(Meteor.user()) return Meteor.user().username;
-  }.property()
+  }
 });

@@ -36,10 +36,10 @@
 							<tr>
 								<td>
 									<strong>{{#linkTo 'recipes.recipe' recipe}} {{recipe.title}} {{/linkTo}}</strong><br>
-									Posted by <a href="#">Teleworm</a>
+									Posted by <a href="#">{{recipe.userName}}</a>
 								</td>
 								<td>Emberjs<br>Javascript, html css</td>
-								<td> 10 Jan 2013</td>
+								<td> {{formatDate recipe.date}}</td>
 							</tr>
 						{{/each}}
 

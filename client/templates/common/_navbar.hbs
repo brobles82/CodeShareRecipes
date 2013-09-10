@@ -30,9 +30,7 @@
           {{/linkTo}}
 
           {{#if controllers.appLogin.token}}
-            {{#linkTo "app.login" tagName="li"}}
-              <a {{bindAttr href="view.href"}}>Account</a>
-            {{/linkTo}}
+            <li> <a {{action logout target='controllers.appLogin' href=true}}>Logout</a> </li>
           {{else}}
             {{#linkTo "app.login" tagName="li"}}
               <a {{bindAttr href="view.href"}}>Login</a>
