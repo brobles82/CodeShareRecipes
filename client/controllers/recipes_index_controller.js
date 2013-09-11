@@ -5,16 +5,6 @@ App.RecipesIndexController = Ember.ArrayController.extend({
 	sortProperties: ['date'],
 	sortAscending: false,
 
-	sortedContent: (function() {
-    var content;
-    content = this.get("content") || [];
-    return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
-      content: content.toArray(),
-      sortProperties: this.get('sortProperties'),
-      sortAscending: this.get('sortAscending')
-    });
-  }).property("content.@each", 'sortProperties', 'sortAscending'),
-
 	filteredContent: function() {
 		var content = this.get('content');
 		var search = this.get('searchTerm').toLowerCase();
