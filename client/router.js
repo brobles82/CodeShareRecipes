@@ -4,6 +4,7 @@ App.Router.map(function() {
   
     this.route("about");
     this.route("login");
+    this.route('features');
     this.route("signup");
 
     this.resource('recipes', { path: '/recipes' }, function() {
