@@ -9,11 +9,19 @@ App.Router.map(function() {
 
     this.resource('recipes', { path: '/recipes' }, function() {
       this.route('recipe', { path: '/recipe/:recipe_id' });
+      this.route('author', { path: '/author/:userName' });
 
       this.route('new', {path: '/recipe/new'});
     });
 
   });
+});
+
+App.RecipesAuthorRoute = Ember.Route.extend({
+  model: function(params) {
+    return App.Recipe.find({userName : params.userName});
+  }
+
 });
 
 App.AuthenticatedRoute = Ember.Route.extend({
