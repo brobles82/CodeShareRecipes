@@ -39,12 +39,6 @@ App.AppLogingRoute = Ember.Route.extend({
   }
 });
 
-App.AppIndexRoute = Ember.Route.extend({
-  model: function () {
-    return App.Recipe.find();
-  }
-});
-
 App.RecipesIndexRoute = Ember.Route.extend({
   model: function () {
     return App.Recipe.find();
