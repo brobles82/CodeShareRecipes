@@ -2,21 +2,8 @@ App.RecipesRecipeController = Ember.ObjectController.extend({
     
     isEditing: false,
 
-    canManage: function() {
-        var recipe = this.get('model');
-        return Meteor.userId() == recipe._data.attributes.userid;
-
-    }.property('userid'),
-
-    scrollTop: function() {
-      window.scrollTo(0, 0);
-    },
-    
-    endEdit: function() {
-        this.set('isEditing', false);
-    },
-
-    editTodo: function () {
+    actions: {
+        editTodo: function () {
       this.set('isEditing', true);
     },
     
@@ -48,5 +35,22 @@ App.RecipesRecipeController = Ember.ObjectController.extend({
         this.set('isEditing', false);
         this.scrollTop();
 
+    }
+    },
+
+
+
+    canManage: function() {
+        var recipe = this.get('model');
+        return Meteor.userId() == recipe._data.attributes.userid;
+
+    }.property('userid'),
+
+    scrollTop: function() {
+      window.scrollTo(0, 0);
+    },
+    
+    endEdit: function() {
+        this.set('isEditing', false);
     }
 });

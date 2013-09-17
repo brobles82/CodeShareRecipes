@@ -35,8 +35,8 @@
 						{{#each recipe in filteredContent}}
 							<tr>
 								<td>
-									<strong>{{#linkTo 'recipes.recipe' recipe}} {{recipe.title}} {{/linkTo}}</strong><br>
-									Coded by {{#linkTo 'recipes.author' recipe.userName }} {{recipe.userName }} {{/linkTo}}
+									<strong>{{#link-to 'recipes.recipe' recipe}} {{recipe.title}} {{/link-to}}</strong><br>
+									Coded by {{#link-to 'recipes.author' recipe.userName }} {{recipe.userName }} {{/link-to}}
 								</td>
 								<td>Emberjs<br>Javascript, html css</td>
 								<td> {{formatDate recipe.date}}</td>
@@ -54,9 +54,9 @@
 		
 		<div class="row-fluid">
 			<div class="span12 center">
-				{{#linkTo recipes.new  classNames="btn btn-primary btn-large post_job" }}
+				{{#link-to recipes.new  classNames="btn btn-primary btn-large post_job" }}
 					Code a Recipe<br /><small>(it's free!)</small>
-				{{/linkTo}}
+				{{/link-to}}
 			</div>
 			</div>
 		</div>

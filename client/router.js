@@ -17,12 +17,16 @@ App.Router.map(function() {
   });
 });
 
-App.RecipesAuthorRoute = Ember.Route.extend({
-  model: function(params) {
-    return App.Recipe.find({userName : params.userName});
-  }
-
+Todos.Router.reopen({
+  location: 'history'
 });
+
+// App.RecipesAuthorRoute = Ember.Route.extend({
+//   model: function(params) {
+//     return App.Recipe.find({userName : params.userName});
+//   }
+
+// });
 
 App.AuthenticatedRoute = Ember.Route.extend({
 
@@ -49,18 +53,19 @@ App.AppLogingRoute = Ember.Route.extend({
 
 App.RecipesIndexRoute = Ember.Route.extend({
   model: function () {
-    return App.Recipe.find();
+    return this.store.find('recipe');
   }
 });
 
 App.RecipesNewRoute = App.AuthenticatedRoute.extend({
   model: function () {
-    return App.Recipe.create;
+    //return App.Recipe.create;
+    return this.store.find('recipe');
   }
 });
 
 App.RecipesRecipeRoute = Ember.Route.extend({
   model: function(params) {
-    return App.Recipe.find(params.recipe_id);
+    return this.get('store').find('recipe', params.recipe_id);
   }
 });

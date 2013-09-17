@@ -12,3 +12,8 @@ ember-data
 ember-precompile
 accounts-password
 accounts-base
+standard-app-packages
+ember-app-packages
+ember-templating
+jquery
+templating

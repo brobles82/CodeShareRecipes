@@ -8,7 +8,7 @@
       </a>
       
       <div class="logo">
-        {{#linkTo "app.index" tagName="span"}}
+        {{#link-to "app.index" tagName="span"}}
           <a {{bindAttr href="view.href"}}>
             <span class="main_logo_text">Code
               <span>
@@ -17,29 +17,29 @@
             </span>
             <p>Empower your learning Share your Knowledge</p>
           </a>
-        {{/linkTo}}
+        {{/link-to}}
       </div>
 
       <div class="nav-collapse pull-right">
         <ul class="nav nav-pills">
-          {{#linkTo "app.index" tagName="li"}}
+          {{#link-to "app.index" tagName="li"}}
             <a {{bindAttr href="view.href"}}>Home</a>
-          {{/linkTo}}
+          {{/link-to}}
 
-          {{#linkTo "app.about" tagName="li"}}
+          {{#link-to "app.about" tagName="li"}}
             <a {{bindAttr href="view.href"}}>About</a>
-          {{/linkTo}}
+          {{/link-to}}
           
-          {{#linkTo "recipes" tagName="li"}}
+          {{#link-to "recipes" tagName="li"}}
             <a {{bindAttr href="view.href"}}>Recipes</a>
-          {{/linkTo}}
+          {{/link-to}}
 
           {{#if controllers.appLogin.token}}
             <li> <a {{action logout target='controllers.appLogin' href=true}}>Logout</a> </li>
           {{else}}
-            {{#linkTo "app.login" tagName="li"}}
+            {{#link-to "app.login" tagName="li"}}
               <a {{bindAttr href="view.href"}}>Login</a>
-            {{/linkTo}}
+            {{/link-to}}
           {{/if}}
         </ul>
       </div>
