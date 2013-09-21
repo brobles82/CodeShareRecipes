@@ -1,30 +1,99 @@
 <template name="postSubmit">
-  <form class="main">
-    <div class="control-group">
-        <label class="control-label" for="url">URL</label>
-        <div class="controls">
-            <input name="url" type="text" value="" placeholder="Your URL"/>
+
+  <div class="container-fluid main_content">
+    <div class="row-fluid">
+
+      <div class="span8">       
+        <br>
+            
+        <h2><i class="icon-suitcase"></i>&nbsp;&nbsp;Post a new Code Recipe</h2>
+        
+        <form>
+          <h3>Recipe Details</h3>
+                
+          <div class="row-fluid">
+            <div class="span8">
+              
+              <div class="control-group">
+                <label class="control-label">Code Recipe URL</label>
+                  
+                  <div class="controls">
+                    <input name="url" type="text" value="" placeholder="Your URL"/>
+                    <span class="help-block">Enter the code recipe title</span>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-fluid">
+            <div class="span8">
+              
+              <div class="control-group">
+                <label class="control-label">Code Recipe title</label>
+                  
+                  <div class="controls">
+                    <input name="title" type="text" value="" placeholder="Name your post"/>
+                    <span class="help-block">Enter the code recipe title</span>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-fluid">
+            <div class="span8">
+              
+              <div class="control-group">
+                <label class="control-label">Code Recipe body</label>
+                <div class="controls">
+                  <textarea name="message" type="text" value=""/>
+                  <span class="help-block">Enter the code recipe text</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="row-fluid">
+            <div class="control-group">
+              <div class="controls">
+                <input type="submit" value="Submit" class="btn btn-primary"/>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <br><br>
+            
+      </div>
+        
+        <div class="span4 sidebar" style="height: 800px;">
+            <br>
+
+            <h3>Tips for a great code recipe</h3>
+            
+            <div class="row-fluid form-tooltip">    
+                
+                <div class="span12">
+                    <h4>Be simple, remember less is more</h4>
+                    Create simple agnostic recipes that works by their own (if you can), and explain them as much as you cna so people cna understan them <br><br>
+                </div>
+            </div>
+            <div class="row-fluid">
+                
+                <div class="span12">
+                    <h4>MarkDown Extra</h4>
+                    Take advantatge of markdown extra features for create beautyfull code recipes, create tables code blocs etc <br><a href="https://github.com/jmcmanus/pagedown-extra"> See how</a> <br><br>
+                </div>          
+            </div>          
+            <div class="row-fluid">
+                
+                <div class="span12">
+                    <h4>Share the code</h4>
+                    Send the code recipe to your friends so they can learn from your experience.
+                </div>
+            </div>
+            
         </div>
     </div>
-
-    <div class="control-group">
-        <label class="control-label" for="title">Title</label>
-        <div class="controls">
-            <input name="title" type="text" value="" placeholder="Name your post"/>
-        </div>
-    </div>
-
-    <div class="control-group">
-        <label class="control-label" for="message">Message</label>
-        <div class="controls">
-            <textarea name="message" type="text" value=""/>
-        </div>
-    </div> 
-
-    <div class="control-group">
-        <div class="controls">
-            <input type="submit" value="Submit" class="btn btn-primary"/>
-        </div>
-    </div>
-  </form>
+</div>
 </template>

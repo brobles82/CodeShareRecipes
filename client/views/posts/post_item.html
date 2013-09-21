@@ -1,15 +1,11 @@
 <template name="postItem">
-  <div class="post">
-    <a href="#" class="upvote btn {{upvotedClass}}">⬆</a>
-    <div class="post-content">
-      <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
-      <p>
-        {{pluralize votes "Vote"}},
-        submitted by {{author}},
-        <a href="{{postPagePath this}}">{{pluralize commentsCount "comment"}}</a>
-        {{#if ownPost}}<a href="{{postEditPath this}}">Edit</a>{{/if}}
-      </p>
-    </div>
-    <a href="{{postPagePath this}}" class="discuss btn">Discuss</a>
-  </div>
+  <tr>
+    <td><a href="#" class="upvote btn {{upvotedClass}}">⬆</a></td>
+	<td>
+		<strong><a href="{{postPagePath this}}" class="discuss">{{title}}</a></strong><br>
+		{{pluralize votes "Vote"}}, Coded by {{author}}
+	</td>
+	<td><a href="{{postPagePath this}}">{{pluralize commentsCount "comment"}}</a></td>
+	<td> {{formatDate recipe.date}}</td>
+  </tr>
 </template>

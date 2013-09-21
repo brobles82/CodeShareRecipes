@@ -7,17 +7,86 @@
 </template>
 
 <template name="postsList">
-  <div class="posts">
-    {{#each postsWithRank}}
-      {{> postItem}}
-    {{/each}}
+	<div class="container-fluid main_content">
+
+		<div class="row-fluid">
+			
+			<br>
+		
+			<div class="span12 no_margin_left">
+				<div class="row-fluid">
+					<div class="span5">
+						<h3>I'm looking for...</h3>
+					</div>
+				</div>
+					
+				<div class="row-fluid">
+					<div class="span5">
+					SEARCH WILL BE IMPLEMENTED HERE ....
+					</div>
+			
+					
+					<div class="span1 browse_search">
+						<a class="btn btn-primary btn-large btn-success" href="browse.html">Search</a>
+					</div>
+						
+				</div>
+				<br>
+			</div>
+		</div>
+
+		<div class="row-fluid">
+			<div class="span9">
+		
+			<h2>Recipes listings found</h2>
+		
+		<table class="table table-striped">
+			<tbody>
+				<table class="table table-striped">
+					<tbody>
+					  {{#each postsWithRank}}
+      				{{> postItem}}
+    				{{/each}}
     
-    {{#if postsReady}}
-      {{#unless allPostsLoaded}}
-    		<a class="load-more" href="#">Load more</a>
-      {{/unless}}
-    {{else}}
-      <div>{{> spinner}}</div>
-    {{/if}}
-  </div>
+
+					</tbody>
+				</table>
+			</tbody>	
+		</table>
+		<table class="table table-striped">
+			<tbody>
+				<table class="table table-striped">
+					<tbody>
+					  {{#if postsReady}}
+
+      				{{#unless allPostsLoaded}}
+      					
+    						<tr></tr><a class="load-more btn btn-large" href="#">Load more</a></tr>
+      				{{/unless}}
+    				{{else}}
+     					<div>{{> spinner}}</div>
+   					{{/if}}
+					</tbody>
+				</table>
+			</tbody>	
+		</table>
+		
+	</div>
+		
+	<div class="span3">
+		<h2>&nbsp;</h2>
+		
+		<div class="row-fluid">
+			<div class="span12 center">
+				<tr>
+    			<td>
+    				<a href='/submit'  class="btn btn-primary btn-large post_job">Code a Recipe<br /><small>(it's free!)</small></a>
+    			</td>
+				<td>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+
 </template>

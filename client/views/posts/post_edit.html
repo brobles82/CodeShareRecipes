@@ -1,31 +1,61 @@
 <template name="postEdit">
-  {{#with post}}
-    <form class="main">
-      <div class="control-group">
-          <label class="control-label" for="url">URL</label>
-          <div class="controls">
-              <input name="url" type="text" value="{{url}}" placeholder="Your URL"/>
-          </div>
-      </div>
+  <div class="container-fluid main_content">
+    {{#with post}}
+      
+      <div class="row-fluid">
+        <div class="span9">
 
-      <div class="control-group">
-          <label class="control-label" for="title">Title</label>
-          <div class="controls">
-              <input name="title" type="text" value="{{title}}" placeholder="Name your post"/>
-          </div>
-      </div>
+          <div class="row-fluid">
+            <div class="span12">
+              <br>
 
-      <div class="control-group">
-          <div class="controls">
-              <input type="submit" value="Submit" class="btn btn-primary submit"/>
+              <form class="main">
+      
+              <h1><input name="title" type="text" value="{{title}}"/></h1>
+
+              <div class="row-fluid">
+                <div class="span12">
+                  <span class="fulltime">Javascript</span>|<span>&nbsp;&nbsp; {{formatDate submitted}}</span>
+                  <a href="/best" class="pull-right">
+                    <span>←&nbsp;</span><span class="lnk-title">Back</span>
+                  </a>
+                </div>
+              </div>
+              <hr>
+
+              <div class="row-fluid">
+                <div class="span12">
+                  <textarea name='message'>{{message}}</textarea>
+                </div>
+              </div>
+              <br>
+
+            </div>
           </div>
-      </div>
-      <hr/>
-      <div class="control-group">
-          <div class="controls">
-              <a class="btn btn-danger delete" href="#">Delete post</a>
+        </div>
+    
+        <div class="span3">
+          <br>
+          <div class="row-fluid">
+            
+              <div class="span12">
+                <input type="submit" value="Submit" class="span6 btn btn-primary btn-large post_job apply_now scroll"/>
+                <br><br>
+                <a style="background: #d9534f;" class="btn btn-large post_job apply_now scroll">Cancel</a>
+              </div>
+            
+
+            <div class="span12">
+              <br>
+              <ul class="nav nav-tabs nav-stacked">
+                <li><a href="#"><i class="icon-envelope"></i> Email</a></li>
+                <li><a href="#"><i class="icon-share"></i> Share</a></li>
+              </ul>
+            </div>
           </div>
+        </div>
+        </form>
       </div>
-    </form>
-  {{/with}}
+      {{/with}}
+  </div>
 </template>
