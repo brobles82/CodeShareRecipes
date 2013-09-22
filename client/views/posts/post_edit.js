@@ -22,18 +22,33 @@ Template.postEdit.events({
         // display the error to the user
         throwError(error.reason);
       } else {
-        Meteor.Router.to('postPage', currentPostId);
+        Session.set('isEditing', false);
       }
     });
   },
   
-  'click .delete': function(e) {
+  'click .cancel': function(e) {
     e.preventDefault();
     
-    if (confirm("Delete this post?")) {
-      var currentPostId = Session.get('currentPostId');
-      Posts.remove(currentPostId);
-      Meteor.Router.to('postsList');
-    }
+    Session.set('isEditing', false);
   }
 });
+
+
+Template.postEdit.rendered = function () {
+  $('textarea#wmd-input').autoResize({
+    minHeight: 100
+  });
+
+
+  var converter = Markdown.getSanitizingConverter();
+
+    Markdown.Extra.init(converter, {
+                  extensions: "all",
+                  highlighter: "prettify"
+                });
+
+    var editor = new Markdown.Editor(converter);
+    editor.run();
+
+};

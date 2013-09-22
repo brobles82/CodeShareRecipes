@@ -18,6 +18,19 @@ Template.postPage.helpers({
 
   comments: function() {
     return Comments.find({postId: this._id});
+  },
+
+
+  formatBody: function(value) {
+  
+    var safeConverter = Markdown.getSanitizingConverter();
+    
+    Markdown.Extra.init(safeConverter, {
+                  extensions: "all",
+                  highlighter: "prettify"
+                });
+                
+    return safeConverter.makeHtml(value);
   }
 });
 
@@ -28,5 +41,12 @@ Template.postPage.events({
       Posts.remove(Session.get('currentPostId'));
       Meteor.Router.to('bestPosts');
     }
-  }
+  },
+
+ 	"click .edit": function (e) {
+ 		e.preventDefault();
+ 		Session.set('isEditing', true);
+ 	}
+  
 });
+

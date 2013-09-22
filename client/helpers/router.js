@@ -6,8 +6,11 @@ Meteor.Router.add({
   '/new': 'newPosts',
   
   '/posts/:_id': {
-    to: 'postPage', 
-    and: function(id) { Session.set('currentPostId', id); }
+    to: 'postDetails',
+    and: function(id) { 
+      Session.set('currentPostId', id);
+      Session.set('isEditing', false);
+    }
   },
   
   '/posts/:_id/edit': {

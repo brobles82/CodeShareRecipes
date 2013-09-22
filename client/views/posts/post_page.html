@@ -22,7 +22,7 @@
 
               <div class="row-fluid">
                 <div class="span12">
-                  {{message}}
+                  {{{formatBody message}}}
                 </div>
               </div>
               <br>
@@ -38,7 +38,7 @@
             {{#if ownPost}}
             
               <div class="span12">
-                <a href="{{postEditPath this}}" class="span6 btn btn-primary btn-large post_job apply_now scroll">Edit</a>
+                <a href="#" class="span6 btn btn-primary btn-large post_job apply_now scroll edit">Edit</a>
                 <br><br>
                 <a style="background: #d9534f;" class="btn btn-large post_job apply_now scroll delete">Delete</a>
               </div>

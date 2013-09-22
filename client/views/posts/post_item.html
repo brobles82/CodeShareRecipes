@@ -2,10 +2,10 @@
   <tr>
     <td><a href="#" class="upvote btn {{upvotedClass}}">⬆</a></td>
 	<td>
-		<strong><a href="{{postPagePath this}}" class="discuss">{{title}}</a></strong><br>
+		<strong><a href="/posts/{{this._id}}" class="discuss">{{title}}</a></strong><br>
 		{{pluralize votes "Vote"}}, Coded by {{author}}
 	</td>
-	<td><a href="{{postPagePath this}}">{{pluralize commentsCount "comment"}}</a></td>
+	<td><a href="/posts/{{this._id}}">{{pluralize commentsCount "comment"}}</a></td>
 	<td> {{formatDate recipe.date}}</td>
   </tr>
 </template>

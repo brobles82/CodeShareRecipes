@@ -6,16 +6,3 @@ Handlebars.registerHelper('pluralize', function(n, thing) {
     return n + ' ' + thing + 's';
   }
 });
-
-
-Handlebars.registerHelper('formatBody', function(value) {
-  
-    var safeConverter = Markdown.getSanitizingConverter();
-    
-    Markdown.Extra.init(safeConverter, {
-                  extensions: "all",
-                  highlighter: "prettify"
-                });
-                
-    return safeConverter.makeHtml(value).htmlSafe();
-});
