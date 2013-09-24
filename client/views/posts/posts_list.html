@@ -6,10 +6,6 @@
   {{> postsList options}}
 </template>
 
-<template name="authorPosts">
-  {{> postsList options}}
-</template>
-
 <template name="postsList">
 	<div class="container-fluid main_content">
 
@@ -20,21 +16,10 @@
 			<div class="span12 no_margin_left">
 				<div class="row-fluid">
 					<div class="span5">
-						<h3>I'm looking for...</h3>
+						<h3> <a href="{{newPostsPath}}">Last Recipes</a> | <a href="{{bestPostsPath}}">Top Recipes</a> </h3>
 					</div>
 				</div>
-					
-				<div class="row-fluid">
-					<div class="span5">
-					SEARCH WILL BE IMPLEMENTED HERE ....
-					</div>
-			
-					
-					<div class="span1 browse_search">
-						<a class="btn btn-primary btn-large btn-success" href="browse.html">Search</a>
-					</div>
-						
-				</div>
+				
 				<br>
 			</div>
 		</div>

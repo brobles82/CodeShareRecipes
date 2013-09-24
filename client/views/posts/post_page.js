@@ -50,3 +50,9 @@ Template.postPage.events({
   
 });
 
+Template.postPage.rendered = function () {
+  $("body, html").animate({
+    scrollTop: 0
+  }, 300);
+};
+

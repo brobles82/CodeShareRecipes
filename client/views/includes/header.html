@@ -1,8 +1,5 @@
 <template name="header">
   
-
-
-
 <div class="row-fluid header_bar navbar navbar-fixed-top main-theme">
   <div class="navbar-inner">
     <div class="container-fluid">
@@ -34,11 +31,11 @@
           <li class="{{activeRouteClass 'home'}}">
             <a href="{{homePath}}">Index</a>
           </li>
-          <li class="{{activeRouteClass  'bestPosts'}}">
-            <a href="{{bestPostsPath}}">Recipes</a>
+          <li class="{{activeRouteClass  'newPosts'}}">
+            <a href="{{newPostsPath}}">Recipes</a>
           </li>
           {{#if currentUser}}
-            <li>
+            <li class="{{activeRouteClass  'postSubmit'}}">
               <a href="{{postSubmitPath}}">Submit Recipe</a>
             </li>
             <li class="dropdown">

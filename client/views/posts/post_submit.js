@@ -23,10 +23,14 @@ Template.postSubmit.events({
 });
 
 Template.postSubmit.rendered = function () {
+  $("body, html").animate({
+    scrollTop: 0
+  }, 300);
+
+
   $('textarea#wmd-input').autoResize({
     minHeight: 100
   });
-
 
   var converter = Markdown.getSanitizingConverter();
 

@@ -2,10 +2,10 @@ Meteor.Router.add({
   '/': 'home',
   '/about': 'about',
   '/features': 'features',
-  '/best': 'bestPosts',
-  '/new': 'newPosts',
+  '/coderecipes/top': 'bestPosts',
+  '/coderecipes/last': 'newPosts',
 
-  '/posts/:_id': {
+  '/coderecipe/:_id': {
     to: 'postDetails',
     and: function(id) { 
       Session.set('currentPostId', id);
@@ -13,7 +13,7 @@ Meteor.Router.add({
     }
   },
   
-  '/posts/:_id/edit': {
+  '/coderecipe/:_id/edit': {
     to: 'postEdit', 
     and: function(id) { Session.set('currentPostId', id); }    
   },

@@ -36,6 +36,11 @@ Template.postEdit.events({
 
 
 Template.postEdit.rendered = function () {
+  
+  $("body, html").animate({
+    scrollTop: 0
+  }, 300);
+  
   $('textarea#wmd-input').autoResize({
     minHeight: 100
   });

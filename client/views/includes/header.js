@@ -10,3 +10,12 @@ Template.header.helpers({
     return active && 'active';
   }
 });
+
+
+Template.header.events = {
+  "click a": function () {
+    $("body, html").animate({
+      scrollTop: 0
+    }, 300);
+  }
+};

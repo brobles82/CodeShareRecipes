@@ -41,3 +41,9 @@ Template.postsList.events({
     this.handle.loadNextPage();
   }
 });
+
+Template.postsList.rendered = function () {
+  $("body, html").animate({
+    scrollTop: 0
+  }, 300);
+};
