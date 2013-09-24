@@ -11,6 +11,10 @@ Template.header.helpers({
   }
 });
 
+Template.header.rendered = function () {
+  $('#login-dropdown-list .dropdown-toggle').text('Account')
+};
+
 
 Template.header.events = {
   "click a": function () {
