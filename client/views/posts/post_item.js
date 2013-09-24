@@ -17,10 +17,6 @@ Template.postItem.helpers({
   }
 });
 
-Template.postItem.rendered = function(){
-
-};
-
 Template.postItem.events({
   'click .upvotable': function(e) {
     e.preventDefault();
