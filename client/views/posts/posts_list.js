@@ -9,7 +9,7 @@ Template.newPosts.helpers({
 
 Template.bestPosts.helpers({
   options: function() {
-    return {
+    return {  
       sort: {votes: -1, submitted: -1},
       handle: bestPostsHandle
     }

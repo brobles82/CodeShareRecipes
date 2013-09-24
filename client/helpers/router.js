@@ -4,7 +4,7 @@ Meteor.Router.add({
   '/features': 'features',
   '/best': 'bestPosts',
   '/new': 'newPosts',
-  
+
   '/posts/:_id': {
     to: 'postDetails',
     and: function(id) { 
