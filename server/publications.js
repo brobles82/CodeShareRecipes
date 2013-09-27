@@ -2,7 +2,11 @@ Meteor.publish('newPosts', function(limit) {
   return Posts.find({}, {sort: {submitted: -1}, limit: limit});
 });
 
-Meteor.publish('bestPosts', function(limit) {
+Meteor.publish('bestPosts', function(author,limit) {
+  return Posts.find({author:author}, {sort: {votes: -1, submitted: -1}, limit: limit});
+});
+
+Meteor.publish('authorPosts', function(limit) {
   return Posts.find({}, {sort: {votes: -1, submitted: -1}, limit: limit});
 });
 

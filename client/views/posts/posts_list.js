@@ -1,3 +1,12 @@
+Template.postAuthor.helpers({
+  options: function() {
+    return {
+      sort: {votes: -1, submitted: -1},
+      handle: authorHandle
+    }
+  }
+});
+
 Template.newPosts.helpers({
   options: function() {
     return {
@@ -19,11 +28,20 @@ Template.bestPosts.helpers({
 Template.postsList.helpers({
   postsWithRank: function() {
     var i = 0, options = {sort: this.sort, limit: this.handle.limit()};
-    return Posts.find({}, options).map(function(post) {
-      post._rank = i;
-      i += 1;
-      return post;
-    });
+    
+    if (Session.get('currentPostAuthor')) {
+      return Posts.find({author: Session.get('currentPostAuthor')}, options).map(function(post) {
+        post._rank = i;
+        i += 1;
+        return post;
+      });
+    } else {
+      return Posts.find({}, options).map(function(post) {
+        post._rank = i;
+        i += 1;
+        return post;
+      });
+    }
   },
 
   postsReady: function() {

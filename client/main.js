@@ -1,5 +1,8 @@
 newPostsHandle = Meteor.subscribeWithPagination('newPosts', 10);
 bestPostsHandle = Meteor.subscribeWithPagination('bestPosts', 10);
+authorHandle = Meteor.subscribeWithPagination('authorPosts', Session.get('currentPostAuthor'),10);
+
+
 
 Deps.autorun(function() {
   Meteor.subscribe('singlePost', Session.get('currentPostId'));

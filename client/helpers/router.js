@@ -2,8 +2,31 @@ Meteor.Router.add({
   '/': 'home',
   '/about': 'about',
   '/features': 'features',
-  '/coderecipes/top': 'bestPosts',
-  '/coderecipes/last': 'newPosts',
+  
+  '/coderecipe/last': {
+    to: 'newPosts',
+    and: function() { 
+      Session.set('currentPostAuthor', null);
+      Session.set('isEditing', false);
+    }
+  },
+  
+  '/coderecipe/top': {
+    to: 'bestPosts',
+    and: function() { 
+      Session.set('currentPostAuthor', null);
+      Session.set('isEditing', false);
+    }
+  },
+  
+  '/coderecipe/author/:author': {
+    to: 'postAuthor',
+    and: function(author) { 
+      Session.set('currentPostAuthor', author);
+      Session.set('isEditing', false);
+    }
+  },
+
 
   '/coderecipe/:_id': {
     to: 'postDetails',
