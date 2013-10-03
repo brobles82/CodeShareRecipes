@@ -8,7 +8,7 @@ Posts.allow({
 Posts.deny({
   update: function(userId, post, fieldNames) {
     // may only edit the following two fields:
-    return (_.without(fieldNames, 'message', 'title').length > 0);
+    return (_.without(fieldNames, 'message', 'title', 'jsbinlink').length > 0);
   }
 });
 
@@ -28,12 +28,12 @@ Meteor.methods({
     // check that there are no previous posts with the same link
     if (postAttributes.title && postWithSameTitle) {
       throw new Meteor.Error(302, 
-        'This link has already been posted', 
+        'This Code recipe has already been posted', 
         postWithSameTitle._id);
     }
     
     // pick out the whitelisted keys
-    var post = _.extend(_.pick(postAttributes, 'title', 'message'), {
+    var post = _.extend(_.pick(postAttributes, 'title', 'message', 'jsbinlink'), {
       userId: user._id, 
       author: user.username, 
       submitted: new Date().getTime(),

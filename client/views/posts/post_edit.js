@@ -9,10 +9,16 @@ Template.postEdit.events({
     e.preventDefault();
     
     var currentPostId = Session.get('currentPostId');
+
+    var preview = $(e.target).find('[name=jsbinlink]').val();
+    if(!preview.match(/^http:\/\/(?:.*?)\.?jsbin\.com\/.+$/)) {
+      preview = "";
+    }
     
     var postProperties = {
       title: $(e.target).find('[name=title]').val(),
       message: $(e.target).find('[name=message]').val(),
+      jsbinlink: preview
     }
 
     console.log(postProperties);

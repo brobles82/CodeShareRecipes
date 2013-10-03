@@ -27,6 +27,11 @@
               </div>
               <br>
 
+
+              {{#if jsbinlink}}
+                <iframe src="{{jsbinlink}}" class='span12' frameborder=0 style='height: 350px;'></iframe>  
+              {{/if}}
+
             </div>
           </div>
         </div>
@@ -61,7 +66,7 @@
 
       <div class="row-fluid">
         <div class="span12">
-        
+          <br>
           <ul class="comments">
             {{#each comments}}
               {{> comment}}
