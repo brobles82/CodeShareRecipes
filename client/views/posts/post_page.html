@@ -12,7 +12,14 @@
 
               <div class="row-fluid">
                 <div class="span12">
-                  <span class="fulltime">Javascript</span>|<span>&nbsp;&nbsp; {{formatDate submitted}}</span>
+                  <span class="fulltime">
+                    {{#each tags}}  
+                		  <div class='label label-info'>
+                		    	<span style='color: rgb(255, 255, 255);'>{{.}}</span>
+                		  </div>
+                	  {{/each}}  
+                  
+                  </span><span>&nbsp;&nbsp; {{formatDate submitted}}</span>
                   <a href="{{newPostsPath}}" class="pull-right">
                     <span>←&nbsp;</span><span class="lnk-title">Back</span>
                   </a>

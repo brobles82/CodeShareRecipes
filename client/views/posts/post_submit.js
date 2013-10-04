@@ -6,13 +6,15 @@ Template.postSubmit.events({
     if(!preview.match(/^http:\/\/(?:.*?)\.?jsbin\.com\/.+$/)) {
       preview = "";
     }
-
-    console.log('holaaaa' + preview);
+    
+    var tags = $(e.target).find('[name=tags]').val().split(',');
     
     var post = {
       title: $(e.target).find('[name=title]').val(),
+      tag: $(e.target).find('[name=tag]').val(),
       message: $(e.target).find('[name=message]').val(),
-      jsbinlink: preview
+      jsbinlink: preview,
+      tags: tags
     }
     
     Meteor.call('post', post, function(error, id) {
@@ -31,9 +33,12 @@ Template.postSubmit.events({
 });
 
 Template.postSubmit.rendered = function () {
+  
   $("body, html").animate({
     scrollTop: 0
   }, 300);
+  
+  $('#tags').tagsInput({});
 
 
   $('textarea#wmd-input').autoResize({

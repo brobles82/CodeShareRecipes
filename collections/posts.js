@@ -8,7 +8,7 @@ Posts.allow({
 Posts.deny({
   update: function(userId, post, fieldNames) {
     // may only edit the following two fields:
-    return (_.without(fieldNames, 'message', 'title', 'jsbinlink').length > 0);
+    return (_.without(fieldNames, 'message', 'title', 'jsbinlink', 'tags').length > 0);
   }
 });
 
@@ -20,6 +20,9 @@ Meteor.methods({
     // ensure the user is logged in
     if (!user)
       throw new Meteor.Error(401, "You need to login to post new stories");
+
+    if (!postAttributes.tags)
+       throw new Meteor.Error(401, "You need tag your code");
     
     // ensure the post has a title
     if (!postAttributes.title)
@@ -33,7 +36,7 @@ Meteor.methods({
     }
     
     // pick out the whitelisted keys
-    var post = _.extend(_.pick(postAttributes, 'title', 'message', 'jsbinlink'), {
+    var post = _.extend(_.pick(postAttributes, 'title', 'tags', 'message', 'jsbinlink'), {
       userId: user._id, 
       author: user.username, 
       submitted: new Date().getTime(),

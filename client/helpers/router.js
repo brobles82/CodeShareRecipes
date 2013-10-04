@@ -6,16 +6,14 @@ Meteor.Router.add({
   '/coderecipe/last': {
     to: 'newPosts',
     and: function() { 
-      Session.set('currentPostAuthor', null);
-      Session.set('isEditing', false);
+      
     }
   },
   
   '/coderecipe/top': {
     to: 'bestPosts',
     and: function() { 
-      Session.set('currentPostAuthor', null);
-      Session.set('isEditing', false);
+      
     }
   },
   
@@ -23,16 +21,28 @@ Meteor.Router.add({
     to: 'postAuthor',
     and: function(author) { 
       Session.set('currentPostAuthor', author);
-      Session.set('isEditing', false);
     }
   },
+  
+  
+  ///////////////////////////////////
+  
+  
+  '/coderecipe/tag/:tag': {
+    to: 'postTag',
+    and: function(tag) { 
+      Session.set('currentPostTag', tag);
+    }
+  },
+  
+  
+  //////////////////////////////////
 
 
   '/coderecipe/:_id': {
     to: 'postDetails',
     and: function(id) { 
       Session.set('currentPostId', id);
-      Session.set('isEditing', false);
     }
   },
   
@@ -53,11 +63,29 @@ Meteor.Router.filters({
     else
       return 'accessDenied';
   },
+  
   'clearErrors': function(page) {
     clearErrors();
     return page;
+  },
+  
+  'clearEdit' : function(page) {
+      Session.set('isEditing', null);
+      return page;
+  },
+  
+  'clearAuthor' : function(page) {
+      Session.set('currentPostAuthor', null);
+      return page;
+  },
+  'clearTag' : function(page) {
+      Session.set('currentPostTag', null);
+      return page;
   }
 });
 
 Meteor.Router.filter('requireLogin', {only: 'postSubmit'});
+Meteor.Router.filter('clearEdit', {except: 'postEdit'});
+Meteor.Router.filter('clearAuthor', {except: 'postAuthor'});
+Meteor.Router.filter('clearTag', {except: 'postTag'});
 Meteor.Router.filter('clearErrors');

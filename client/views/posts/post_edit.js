@@ -15,10 +15,14 @@ Template.postEdit.events({
       preview = "";
     }
     
+    var tags = $(e.target).find('[name=tags]').val().split(',');
+    
     var postProperties = {
       title: $(e.target).find('[name=title]').val(),
+      tag: $(e.target).find('[name=tag]').val(),
       message: $(e.target).find('[name=message]').val(),
-      jsbinlink: preview
+      jsbinlink: preview,
+      tags: tags
     }
 
     console.log(postProperties);
@@ -51,6 +55,7 @@ Template.postEdit.rendered = function () {
     minHeight: 100
   });
 
+  $('#tags').tagsInput({});
 
   var converter = Markdown.getSanitizingConverter();
 

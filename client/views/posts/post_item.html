@@ -2,10 +2,19 @@
   <tr>
     <td><a href="#" class="upvote btn {{upvotedClass}}">⬆</a></td>
 	<td>
-		<strong><a href="{{postDetailsPath this._id}}" class="discuss">{{title}}</a></strong><br>
+		<strong><a href="{{postDetailsPath this._id}}" class="discuss">{{title}}</a> 
+		{{#each tags}}  
+		  <div class='label label-info'>
+		    	<a style='color: rgb(255, 255, 255);' href="/coderecipe/tag/{{.}}">{{.}}</a>
+		  </div>
+	  {{/each}}
+	  
+	    </strong><br>
+	  
+	
 		{{pluralize votes "Vote"}}, Coded by <a href="/coderecipe/author/{{author}}">{{author}}</a>
 	</td>
 	<td><a href="{{postDetailsPath this._id}}">{{pluralize commentsCount "comment"}}</a></td>
-	<td> {{formatDate recipe.date}}</td>
+	<td> {{formatDate submitted}}</td>
   </tr>
 </template>

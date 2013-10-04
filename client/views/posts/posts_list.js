@@ -7,6 +7,16 @@ Template.postAuthor.helpers({
   }
 });
 
+Template.postTag.helpers({
+  options: function() {
+    return {
+      sort: {votes: -1, submitted: -1},
+      handle: tagHandle
+    }
+  }
+});
+
+
 Template.newPosts.helpers({
   options: function() {
     return {
@@ -35,13 +45,23 @@ Template.postsList.helpers({
         i += 1;
         return post;
       });
-    } else {
-      return Posts.find({}, options).map(function(post) {
+    }
+
+    if (Session.get('currentPostTag')) {
+      return Posts.find({tags: Session.get('currentPostTag')}, options).map(function(post) {
         post._rank = i;
         i += 1;
         return post;
       });
     }
+
+    //If not session set
+      return Posts.find({}, options).map(function(post) {
+        post._rank = i;
+        i += 1;
+        return post;
+      });
+    
   },
 
   postsReady: function() {
