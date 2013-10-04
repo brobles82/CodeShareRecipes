@@ -66,9 +66,10 @@ Template.postEdit.rendered = function () {
     scrollTop: 0
   }, 300);
   
-  $('textarea#wmd-input').autoResize({
-    minHeight: 100
-  });
+  $('textarea#wmd-input').css('height', 'auto' );
+  $('textarea#wmd-input').height( this.scrollHeight );
+  $('textarea#wmd-input').css('overflow-y', 'hidden' );
+  $('textarea#wmd-input').css('padding-top', '1.1em' );
 
   $('#tags').tagsInput({});
 
