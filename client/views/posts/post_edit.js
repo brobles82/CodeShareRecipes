@@ -19,13 +19,28 @@ Template.postEdit.events({
     
     var postProperties = {
       title: $(e.target).find('[name=title]').val(),
-      tag: $(e.target).find('[name=tag]').val(),
+      tags: $(e.target).find('[name=tag]').val(),
       message: $(e.target).find('[name=message]').val(),
       jsbinlink: preview,
       tags: tags
     }
+    
+    if (postProperties.tags.valueOf() == "") {
+       throwError("You need tag your code");
+       return;
+    }
+      
 
-    console.log(postProperties);
+    // ensure the post has a title
+    if (!postProperties.title) {
+      throwError("Title can't be blank");
+      return;
+    }
+    
+    if (!postProperties.message) {
+      throwError("Please fill in a message");
+      return;
+    }
     
     Posts.update(currentPostId, {$set: postProperties}, function(error) {
       if (error) {
