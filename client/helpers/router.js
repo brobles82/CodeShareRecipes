@@ -25,19 +25,12 @@ Meteor.Router.add({
   },
   
   
-  ///////////////////////////////////
-  
-  
   '/coderecipe/tag/:tag': {
     to: 'postTag',
     and: function(tag) { 
       Session.set('currentPostTag', tag);
     }
   },
-  
-  
-  //////////////////////////////////
-
 
   '/coderecipe/:_id': {
     to: 'postDetails',
