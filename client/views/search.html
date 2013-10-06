@@ -1,0 +1,16 @@
+<template name="search">
+    {{> spometSearch}}
+    	{{#each results}}
+    		{{> result}}
+    	{{/each}}
+</template>
+
+
+<template name="result">
+    <div class="row">
+
+        {{postId}}<span class="large-8 columns">Title: <b>{{title}}</b></span>
+        <span> message: {{message}}</span>
+        <a href="/coderecipe/{{slug}}"> View</a>
+    </div>
+</template>

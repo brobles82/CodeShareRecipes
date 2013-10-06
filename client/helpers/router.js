@@ -2,6 +2,8 @@ Meteor.Router.add({
   '/': 'home',
   '/about': 'about',
   '/features': 'features',
+
+  '/search' : 'search',
   
   '/coderecipe/last': {
     to: 'newPosts',
@@ -32,16 +34,16 @@ Meteor.Router.add({
     }
   },
 
-  '/coderecipe/:_id': {
+  '/coderecipe/:slug': {
     to: 'postDetails',
-    and: function(id) { 
-      Session.set('currentPostId', id);
+    and: function(slug) { 
+      Session.set('currentPostSlug', slug);
     }
   },
   
   '/coderecipe/:_id/edit': {
     to: 'postEdit', 
-    and: function(id) { Session.set('currentPostId', id); }    
+    and: function(id) { Session.set('currentPostSlug', id); }    
   },
   
   '/submit': 'postSubmit'
@@ -82,3 +84,6 @@ Meteor.Router.filter('clearEdit', {except: 'postEdit'});
 Meteor.Router.filter('clearAuthor', {except: 'postAuthor'});
 Meteor.Router.filter('clearTag', {except: 'postTag'});
 Meteor.Router.filter('clearErrors');
+
+
+// Filter for current post slug

@@ -8,7 +8,7 @@ Posts.allow({
 Posts.deny({
   update: function(userId, post, fieldNames) {
     // may only edit the following two fields:
-    return (_.without(fieldNames, 'message', 'title', 'jsbinlink', 'tags').length > 0);
+    return (_.without(fieldNames, 'message', 'title', 'jsbinlink', 'tags', 'slug').length > 0);
   }
 });
 
@@ -34,17 +34,22 @@ Meteor.methods({
         'This Code recipe has already been posted', 
         postWithSameTitle._id);
     }
+
+    var slug = URLify2(postAttributes.title);
     
     // pick out the whitelisted keys
     var post = _.extend(_.pick(postAttributes, 'title', 'tags', 'message', 'jsbinlink'), {
-      userId: user._id, 
+      userId: user._id,
       author: user.username, 
       submitted: new Date().getTime(),
       commentsCount: 0,
+      slug: slug,
       upvoters: [], votes: 0
     });
     
     var postId = Posts.insert(post);
+    Spomet.add(new Spomet.Findable(post.title, 'title', postId, 'post', postId));
+    Spomet.add(new Spomet.Findable(post.message, 'message', postId, 'post', postId));
     
     return postId;
   },

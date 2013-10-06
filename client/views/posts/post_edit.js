@@ -1,6 +1,6 @@
 Template.postEdit.helpers({
   post: function() {
-    return Posts.findOne(Session.get('currentPostId'));
+    return Posts.findOne({slug: Session.get('currentPostSlug')});
   }
 });
 
@@ -8,7 +8,7 @@ Template.postEdit.events({
   'submit form': function(e) {
     e.preventDefault();
     
-    var currentPostId = Session.get('currentPostId');
+    var currentPostId = Posts.findOne({slug: Session.get('currentPostSlug')})._id;
 
     var preview = $(e.target).find('[name=jsbinlink]').val();
     if(!preview.match(/^http:\/\/(?:.*?)\.?jsbin\.com\/.+$/)) {
@@ -22,6 +22,7 @@ Template.postEdit.events({
       tags: $(e.target).find('[name=tag]').val(),
       message: $(e.target).find('[name=message]').val(),
       jsbinlink: preview,
+      slug: URLify2($(e.target).find('[name=title]').val()),
       tags: tags
     }
     

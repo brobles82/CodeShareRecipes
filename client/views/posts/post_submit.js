@@ -16,7 +16,7 @@ Template.postSubmit.events({
       jsbinlink: preview,
       tags: tags
     }
-    
+
     Meteor.call('post', post, function(error, id) {
       if (error) {
         // display the error to the user
@@ -26,7 +26,7 @@ Template.postSubmit.events({
         if (error.error === 302)
           Meteor.Router.to('postDetails', error.details);
       } else {
-        Meteor.Router.to('postDetails', id);
+        Meteor.Router.to('postDetails', Posts.findOne(id).slug);
       }
     });
   }

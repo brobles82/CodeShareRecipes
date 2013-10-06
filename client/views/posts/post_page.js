@@ -1,6 +1,6 @@
 Template.postPage.helpers({
   currentPost: function() {
-    return Posts.findOne(Session.get('currentPostId'));
+    return Posts.findOne({slug: Session.get('currentPostSlug')});
   },
 
   ownPost: function() {
