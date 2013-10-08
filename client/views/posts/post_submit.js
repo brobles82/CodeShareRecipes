@@ -14,6 +14,7 @@ Template.postSubmit.events({
       tag: $(e.target).find('[name=tag]').val(),
       message: $(e.target).find('[name=message]').val(),
       jsbinlink: preview,
+      messageHeight: $('#wmd-input').css('height'),
       tags: tags
     }
 

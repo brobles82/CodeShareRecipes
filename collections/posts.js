@@ -8,7 +8,7 @@ Posts.allow({
 Posts.deny({
   update: function(userId, post, fieldNames) {
     // may only edit the following two fields:
-    return (_.without(fieldNames, 'message', 'title', 'jsbinlink', 'tags', 'slug').length > 0);
+    return (_.without(fieldNames, 'message', 'title', 'jsbinlink', 'tags', 'slug','messageHeight').length > 0);
   }
 });
 
@@ -42,7 +42,7 @@ Meteor.methods({
     var slug = URLify2(postAttributes.title);
     
     // pick out the whitelisted keys
-    var post = _.extend(_.pick(postAttributes, 'title', 'tags', 'message', 'jsbinlink'), {
+    var post = _.extend(_.pick(postAttributes, 'title', 'tags', 'message', 'jsbinlink','messageHeight'), {
       userId: user._id,
       author: user.username, 
       submitted: new Date().getTime(),

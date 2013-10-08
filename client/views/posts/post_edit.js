@@ -7,22 +7,23 @@ Template.postEdit.helpers({
 Template.postEdit.events({
   'submit form': function(e) {
     e.preventDefault();
-    
+
     var currentPostId = Posts.findOne({slug: Session.get('currentPostSlug')})._id;
 
     var preview = $(e.target).find('[name=jsbinlink]').val();
     if(!preview.match(/^http:\/\/(?:.*?)\.?jsbin\.com\/.+$/)) {
       preview = "";
     }
-    
+
     var tags = $(e.target).find('[name=tags]').val().split(',');
-    
+
     var postProperties = {
       title: $(e.target).find('[name=title]').val(),
       tags: $(e.target).find('[name=tag]').val(),
       message: $(e.target).find('[name=message]').val(),
       jsbinlink: preview,
       slug: URLify2($(e.target).find('[name=title]').val()),
+      messageHeight: $('#wmd-input').css('height'),
       tags: tags
     }
     
@@ -30,7 +31,6 @@ Template.postEdit.events({
        throwError("You need tag your code");
        return;
     }
-      
 
     // ensure the post has a title
     if (!postProperties.title) {
@@ -68,11 +68,10 @@ Template.postEdit.rendered = function () {
   $("body, html").animate({
     scrollTop: 0
   }, 300);
-  
-  $('textarea#wmd-input').css('height', 'auto' );
-  $('textarea#wmd-input').height( this.scrollHeight );
-  $('textarea#wmd-input').css('overflow-y', 'hidden' );
-  $('textarea#wmd-input').css('padding-top', '1.1em' );
+
+  $('textarea#wmd-input').autoResize({
+    minHeight: 100
+  });
 
   $('#tags').tagsInput({});
 
