@@ -5,11 +5,8 @@ Template.search.results = function() {
 Template.result.title = function() {
   var c, p;
   if (this.type !== 'custom') {
-    p = Posts.findOne({
-      _id: this.base
-    });
+    p = Posts.findOne(this.base);
     if (p != null) {
-      Session.set('title', p.title);
       return p.title;
     } else {
       return;

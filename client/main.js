@@ -5,9 +5,9 @@ tagHandle = Meteor.subscribeWithPagination('tagPosts', Session.get('currentPostT
 
 
 Deps.autorun(function() {
-  Meteor.subscribe('singlePost', Session.get('currentPostId'));
+  Meteor.subscribe('singlePost', Session.get('currentPostSlug'));
   
-  Meteor.subscribe('comments', Session.get('currentPostId'));
+  Meteor.subscribe('comments', Session.get('currentPostSlug'));
 })
 
 Meteor.subscribe('notifications');

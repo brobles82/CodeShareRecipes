@@ -27,6 +27,10 @@ Meteor.methods({
     // ensure the post has a title
     if (!postAttributes.title)
       throw new Meteor.Error(422, 'Please fill in a headline');
+
+    // ensure the post has a message
+    if (!postAttributes.message)
+      throw new Meteor.Error(422, 'Please fill in content');
     
     // check that there are no previous posts with the same link
     if (postAttributes.title && postWithSameTitle) {

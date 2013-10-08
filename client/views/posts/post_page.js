@@ -35,10 +35,11 @@ Template.postPage.helpers({
 });
 
 Template.postPage.events({
-	'click .delete': function(e) {
+	'click #delete': function(e) {
     e.preventDefault();
     if (confirm("Delete this post?")) {
-      Posts.remove(Session.get('currentPostId'));
+      post = Posts.findOne({slug: Session.get('currentPostSlug')});
+      Posts.remove(post._id);
       Meteor.Router.to('bestPosts');
     }
   },
