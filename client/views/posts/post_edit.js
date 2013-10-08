@@ -48,7 +48,8 @@ Template.postEdit.events({
         // display the error to the user
         throwError(error.reason);
       } else {
-        alert('holaaa');
+        Session.set('isEditing', false);
+        Session.set('currentPostSlug', postProperties.slug);
         Meteor.Router.to('postDetails', Session.get('currentPostSlug'));
       }
     });

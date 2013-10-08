@@ -41,11 +41,6 @@ Meteor.Router.add({
     }
   },
   
-  '/coderecipe/:_id/edit': {
-    to: 'postEdit', 
-    and: function(id) { Session.set('currentPostSlug', id); }    
-  },
-  
   '/submit': 'postSubmit'
 });
 
