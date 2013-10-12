@@ -1,0 +1,19 @@
+<template name="searchResult">
+	{{#with searchResult}}
+	  <tr>
+			<td>
+				<strong><a href="{{postDetailsPath slug}}" class="discuss">{{title}}</a> 
+					{{#each tags}}  
+					  <div class='label label-info'>
+					    	<a style='color: rgb(255, 255, 255);' href="/coderecipe/tag/{{.}}">{{.}}</a>
+					  </div>
+				  {{/each}}
+				</strong><br>
+			
+				{{pluralize votes "Vote"}}, Coded by <a href="/coderecipe/author/{{author}}">{{author}}</a>
+			</td>
+			<td><a href="{{postDetailsPath slug}}">{{pluralize commentsCount "comment"}}</a></td>
+			<td> {{formatDate submitted}}</td>
+	  </tr>
+  {{/with}}
+</template>

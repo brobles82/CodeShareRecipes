@@ -74,41 +74,10 @@ Template.postsList.helpers({
   },
 
   //Search Helpers
-
   searchResults: function() {
     return Spomet.defaultSearch.results();
-  },
-
-  searchResultItem: function() {
-    var c, p;
-    if (this.type !== 'custom') {
-      p = Posts.findOne(this.base);
-      if (p != null) {
-        return p;
-      } else {
-        return;
-      }
-    }
   }
 });
-
-
-Template.postsList.try = function() {
-  var c, p;
-  if (this.type !== 'custom') {
-    p = Posts.findOne(this.base);
-    if (p != null) {
-      return p;
-    } else {
-      return;
-    }
-  }
-};
-
-
-
-
-
 
 
 Template.postsList.events({

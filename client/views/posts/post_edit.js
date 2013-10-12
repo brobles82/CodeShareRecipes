@@ -50,6 +50,12 @@ Template.postEdit.events({
       } else {
         Session.set('isEditing', false);
         Session.set('currentPostSlug', postProperties.slug);
+
+        //Update search        
+        Spomet.update(new Spomet.Findable(postProperties.title, 'title', currentPostId, 'post', new Date().getTime()));
+        Spomet.update(new Spomet.Findable(postProperties.message, 'message', currentPostId, 'post', new Date().getTime()));
+        
+
         Meteor.Router.to('postDetails', Session.get('currentPostSlug'));
       }
     });
