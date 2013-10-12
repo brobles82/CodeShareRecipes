@@ -1,10 +1,22 @@
 <template name="result">
-    <div class="row">
-
-        <span class="large-8 columns">Title: <b>{{title}}</b></span>
-        <span> message: {{message}}</span>
-        <a href="/coderecipe/{{slug}}"> View</a>
-    </div>
+  <tr>
+    
+	<td>
+		<strong><a href="{{postDetailsPath try.slug}}" class="discuss">{{try.title}}</a> 
+		{{#each try.tags}}  
+		  <div class='label label-info'>
+		    	<a style='color: rgb(255, 255, 255);' href="/coderecipe/tag/{{.}}">{{.}}</a>
+		  </div>
+	  {{/each}}
+	  
+	    </strong><br>
+	  
+	
+		{{pluralize try.votes "Vote"}}, Coded by <a href="/coderecipe/author/{{try.author}}">{{try.author}}</a>
+	</td>
+	<td><a href="{{postDetailsPath try.slug}}">{{pluralize try.commentsCount "comment"}}</a></td>
+	<td> {{formatDate try.submitted}}</td>
+  </tr>
 </template>
 
 

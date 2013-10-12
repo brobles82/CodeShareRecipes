@@ -14,6 +14,8 @@
   {{> postsList options}}
 </template>
 
+
+
 <template name="postsList">
 	<div class="container-fluid main_content">
 
@@ -25,6 +27,7 @@
 				<div class="row-fluid">
 					<div class="span5">
 						<h3> <a href="{{newPostsPath}}">Last Recipes</a> | <a href="{{bestPostsPath}}">Top Recipes</a> </h3>
+						{{> spometSearch}}
 					</div>
 				</div>
 				
@@ -36,37 +39,52 @@
 			<div class="span9">
 		
 			<h2>Recipes listings found</h2>
-		
-		<table class="table table-striped">
-			<tbody>
+
+			{{#if searchResults}}
 				<table class="table table-striped">
 					<tbody>
-					  {{#each postsWithRank}}
-      				{{> postItem}}
-    				{{/each}}
-    
-
-					</tbody>
+						<table class="table table-striped">
+							<tbody>
+							  {{#each searchResults}}
+									{{> result}}
+		    				{{/each}}
+							</tbody>
+						</table>
+					</tbody>	
 				</table>
-			</tbody>	
-		</table>
-		<table class="table table-striped">
-			<tbody>
+			{{else}}
+
 				<table class="table table-striped">
 					<tbody>
-					  {{#if postsReady}}
+						<table class="table table-striped">
+							<tbody>
+							  {{#each postsWithRank}}
+		      				{{> postItem}}
+		    				{{/each}}
+		    
 
-      				{{#unless allPostsLoaded}}
-      					
-    						<tr></tr><a class="load-more btn btn-large" href="#">Load more</a></tr>
-      				{{/unless}}
-    				{{else}}
-     					<div>{{> spinner}}</div>
-   					{{/if}}
-					</tbody>
+							</tbody>
+						</table>
+					</tbody>	
 				</table>
-			</tbody>	
-		</table>
+				<table class="table table-striped">
+					<tbody>
+						<table class="table table-striped">
+							<tbody>
+							  {{#if postsReady}}
+
+		      				{{#unless allPostsLoaded}}
+		      					
+		    						<tr></tr><a class="load-more btn btn-large" href="#">Load more</a></tr>
+		      				{{/unless}}
+		    				{{else}}
+		     					<div>{{> spinner}}</div>
+		   					{{/if}}
+							</tbody>
+						</table>
+					</tbody>	
+				</table>
+			{{/if}}
 		
 	</div>
 		

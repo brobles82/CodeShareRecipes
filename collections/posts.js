@@ -52,8 +52,8 @@ Meteor.methods({
     });
     
     var postId = Posts.insert(post);
-    Spomet.add(new Spomet.Findable(post.title, 'title', postId, 'post', postId));
-    Spomet.add(new Spomet.Findable(post.message, 'message', postId, 'post', postId));
+    Spomet.add(new Spomet.Findable(post.title, 'title', postId, 'post', 1));
+    Spomet.add(new Spomet.Findable(post.message, 'message', postId, 'post', 1));
     
     return postId;
   },
