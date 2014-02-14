@@ -4,6 +4,7 @@
     "accounts-ui-bootstrap-dropdown": {},
     "spin": {},
     "paginated-subscription": {},
-    "urlify2": {}
+    "urlify2": {},
+    "smart-collections": {}
   }
 }

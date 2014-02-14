@@ -1,4 +1,4 @@
-Notifications = new Meteor.Collection('notifications');
+Notifications = new Meteor.SmartCollection('notifications');
 
 Notifications.allow({
   update: ownsDocument

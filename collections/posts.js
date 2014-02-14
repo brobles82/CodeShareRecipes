@@ -1,4 +1,4 @@
-Posts = new Meteor.Collection('posts');
+Posts = new Meteor.SmartCollection('posts');
 
 Posts.allow({
   update: ownsDocument,
