@@ -7,7 +7,7 @@
     "iron-router": {},
     "fast-render": {},
     "accounts-ui-bootstrap-dropdown": {},
-    "HTML5-History-API": {},
-    "nprogress": {}
+    "nprogress": {},
+    "HTML5-History-API": {}
   }
 }

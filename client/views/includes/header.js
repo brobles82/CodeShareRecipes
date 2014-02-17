@@ -12,5 +12,8 @@ Template.header.helpers({
 });
 
 Template.header.rendered = function () {
-  $('#login-dropdown-list .dropdown-toggle').text('Account')
+  $('#login-dropdown-list .dropdown-toggle').text('Account');
+  $('label#login-username-label').css( "color", "black" );
+  $('label#login-password-label').css( "color", "black" );
+  $('label#login-password-again-label').css( "color", "black" );
 };

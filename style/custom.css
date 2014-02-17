@@ -5,3 +5,7 @@
 .center-text {
   text-align: center;
 }
+
+.navbar label {
+color: #000000;
+}

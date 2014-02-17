@@ -35,12 +35,7 @@ Template.postSubmit.events({
 
 Template.postSubmit.rendered = function () {
   
-  $("body, html").animate({
-    scrollTop: 0
-  }, 300);
-  
   $('#tags').tagsInput({});
-
 
   $('textarea#wmd-input').autoResize({
     minHeight: 100
