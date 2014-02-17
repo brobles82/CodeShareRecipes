@@ -109,6 +109,29 @@ Router.map(function() {
     path: '/coderecipe/:slug',
     controller: PostController
   });
+  
+  
+  // RSS
+  this.route('rss', {
+  where: 'server',
+  path: '/feed.xml',
+  action: function() {
+    fastRender: false;
+    var feed = new RSS({
+      title: "New Microscope Posts",
+      description: "The latest posts from Microscope, the smallest news aggregator."
+    });
+    Posts.find({}, {sort: {submitted: -1}, limit: 20}).forEach(function(post) {
+      feed.item({
+        title: post.title
+      })
+    });
+    this.response.write(feed.xml());
+    this.response.end();
+  }
+});
+
+  
 });
 
 
@@ -117,9 +140,3 @@ if(Meteor.isServer) {
     this.subscribe('notifications');
   });
 }
-
-Meteor.startup(function(){
-  NProgress.start();
-  // Do something, like loading...
-  NProgress.done();
-});
