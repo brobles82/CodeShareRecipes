@@ -11,32 +11,28 @@
       
       <div class="logo">
         <span>
-          <a href="{{homePath}}">
+          <a href="{{pathFor 'home'}}">
             <span class="main_logo_text">Code
               <span>
                 Recipes
               </span>
             </span>
             <p>Empower your learning Share your Knowledge</p>
-
           </a>
         </span>
-        
       </div>
-
-
-
+      
       <div class="nav-collapse pull-right">
         <ul class="nav">
-          <li class="{{activeRouteClass 'home'}}">
-            <a href="{{homePath}}">Index</a>
+          <li class="">
+            <a href="{{pathFor 'home'}}">Index</a>
           </li>
-          <li class="{{activeRouteClass  'newPosts'}}">
-            <a href="{{newPostsPath}}">Recipes</a>
+          <li class="">
+            <a href="{{pathFor 'newPosts'}}">Recipes</a>
           </li>
           {{#if currentUser}}
-            <li class="{{activeRouteClass  'postSubmit'}}">
-              <a href="{{postSubmitPath}}">Submit Recipe</a>
+            <li class="">
+              <a href="{{pathFor 'postSubmit'}}">Submit Recipe</a>
             </li>
             <li class="dropdown">
               {{> notifications}}

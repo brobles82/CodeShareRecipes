@@ -1,10 +1,13 @@
 {
   "packages": {
-    "router": {},
-    "accounts-ui-bootstrap-dropdown": {},
     "spin": {},
     "paginated-subscription": {},
     "urlify2": {},
-    "smart-collections": {}
+    "smart-collections": {},
+    "iron-router": {},
+    "fast-render": {},
+    "accounts-ui-bootstrap-dropdown": {},
+    "HTML5-History-API": {},
+    "nprogress": {}
   }
 }

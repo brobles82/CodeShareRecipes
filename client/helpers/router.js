@@ -1,84 +1,125 @@
-Meteor.Router.add({
-  '/': 'home',
-  '/about': 'about',
-  '/features': 'features',
-
-  '/search' : 'search',
-  
-  '/coderecipe/last': {
-    to: 'newPosts',
-    and: function() { 
-      
-    }
-  },
-  
-  '/coderecipe/top': {
-    to: 'bestPosts',
-    and: function() { 
-      
-    }
-  },
-  
-  '/coderecipe/author/:author': {
-    to: 'postAuthor',
-    and: function(author) { 
-      Session.set('currentPostAuthor', author);
-    }
-  },
-  
-  
-  '/coderecipe/tag/:tag': {
-    to: 'postTag',
-    and: function(tag) { 
-      Session.set('currentPostTag', tag);
-    }
-  },
-
-  '/coderecipe/:slug': {
-    to: 'postDetails',
-    and: function(slug) { 
-      Session.set('currentPostSlug', slug);
-    }
-  },
-  
-  '/submit': 'postSubmit'
+Router.configure({
+  layoutTemplate: 'layout',
+  loadingTemplate: 'loading'
 });
 
-Meteor.Router.filters({
-  'requireLogin': function(page) {
-    if (Meteor.user())
-      return page;
-    else if (Meteor.loggingIn())
-      return 'loading';
-    else
-      return 'accessDenied';
+var filters = {
+
+  nProgressHook: function () {
+    if (this.ready()) {
+      NProgress.done(); 
+    } else {
+      NProgress.start();
+     this.stop();
+   }
   },
+
+  resetScroll: function () {
+    var scrollTo = window.currentScroll || 0;
+    $('body').scrollTop(scrollTo);
+    $('body').css("min-height", 0);
+  },
+
+  isLoggedIn: function() {
+    if (!(Meteor.loggingIn() || Meteor.user())) {
+      //throwError(i18n.t('Please Sign In First.'))
+      this.render('accessDenied');
+      this.stop(); 
+    }
+  },
+
+  isLoggedOut: function() {
+    if(Meteor.user()){
+      this.render('already_logged_in');
+      this.stop();
+    }
+  }
+
+}
+
+if(Meteor.isClient){
+  Router.before(filters.nProgressHook, {except:[]});
   
-  'clearErrors': function(page) {
-    clearErrors();
-    return page;
+  //Router.before(filters.isLoggedIn, {only: ['comment_reply','post_submit']});
+  Router.before(filters.isLoggedIn, {only: ['postSubmit']});
+  //Router.after(filters.resetScroll, {except:['posts_top', 'posts_new', 'posts_best', 'posts_pending', 'posts_category', 'all-users']});
+  Router.after(filters.resetScroll, {except:[]});
+}
+
+PostsAuthorController = FastRender.RouteController.extend({
+  template: 'postAuthor',
+  waitOn: function () {
+    return [
+      // remove Session.get('currentPostAuthor')
+      Meteor.subscribe('authorPosts', this.params.author, 10)
+    ];
   },
-  
-  'clearEdit' : function(page) {
-      Session.set('isEditing', null);
-      return page;
-  },
-  
-  'clearAuthor' : function(page) {
-      Session.set('currentPostAuthor', null);
-      return page;
-  },
-  'clearTag' : function(page) {
-      Session.set('currentPostTag', null);
-      return page;
+  data: function () {
+    return authorHandle = Meteor.subscribeWithPagination('authorPosts', this.params.author, 10);
   }
 });
 
-Meteor.Router.filter('requireLogin', {only: 'postSubmit'});
-Meteor.Router.filter('clearEdit', {except: 'postEdit'});
-Meteor.Router.filter('clearAuthor', {except: 'postAuthor'});
-Meteor.Router.filter('clearTag', {except: 'postTag'});
-Meteor.Router.filter('clearErrors');
+PostsTagController = FastRender.RouteController.extend({
+  template: 'postTag',
+  waitOn: function () {
+    return Meteor.subscribe('tagPosts', this.params.tag, 10);
+  },
+  
+  data: function () {
+    return tagHandle = Meteor.subscribeWithPagination('tagPosts', this.params.tag, 10);
+  }
+});
+
+PostController = FastRender.RouteController.extend({
+  template: 'postDetails',
+  waitOn: function () {
+    return [
+      Meteor.subscribe('singePost',this.params.slug),
+      Meteor.subscribe('comments', this.params.slug)
+    ];
+   
+  },
+  data: function () {
+    return post = Posts.findOne({slug: this.params.slug});
+  }
+});
 
 
-// Filter for current post slug
+Router.map(function() {
+  this.route('home', {path: '/', fastRender: true});
+  this.route('about', {path: '/about', fastRender: true});
+  this.route('features', {path: '/features', fastRender: true});
+  this.route('search', {path: '/search', fastRender: true});
+  this.route('postSubmit', {path: '/submit', fastRender: true});
+  
+  this.route('newPosts', {path: '/coderecipe/last', fastRender: true});
+  this.route('bestPosts', {path: '/coderecipe/top', fastRender: true});
+  
+  this.route('postAuthor', {
+    path: '/coderecipe/author/:author',
+    controller: PostsAuthorController
+  });
+  
+  this.route('postTag', {
+    path: '/coderecipe/tag/:tag',
+    controller: PostsTagController
+  });
+  
+  this.route('postDetails', {
+    path: '/coderecipe/:slug',
+    controller: PostController
+  });
+});
+
+
+if(Meteor.isServer) {
+  FastRender.onAllRoutes(function() {
+    this.subscribe('notifications');
+  });
+}
+
+Meteor.startup(function(){
+  NProgress.start();
+  // Do something, like loading...
+  NProgress.done();
+});

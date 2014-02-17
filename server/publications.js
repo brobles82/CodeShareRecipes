@@ -14,9 +14,8 @@ Meteor.publish('tagPosts', function(tag,limit) {
   return Posts.find({tags:tag}, {sort: {votes: -1, submitted: -1}, limit: limit});
 });
 
-Meteor.publish('singlePost', function(slug) {
-	a = Posts.findOne({slug: slug});
-  return a._id && a;
+Meteor.publish('singePost', function(slug) {
+  return Posts.find({slug: slug});
 });
 
 Meteor.publish('comments', function(slug) {

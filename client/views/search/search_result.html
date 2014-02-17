@@ -2,7 +2,7 @@
 	{{#with searchResult}}
 	  <tr>
 			<td>
-				<strong><a href="{{postDetailsPath slug}}" class="discuss">{{title}}</a> 
+				<strong><a href="/coderecipe/{{slug}}" class="discuss">{{title}}</a> 
 					{{#each tags}}  
 					  <div class='label label-info'>
 					    	<a style='color: rgb(255, 255, 255);' href="/coderecipe/tag/{{.}}">{{.}}</a>
@@ -12,7 +12,7 @@
 			
 				{{pluralize votes "Vote"}}, Coded by <a href="/coderecipe/author/{{author}}">{{author}}</a>
 			</td>
-			<td><a href="{{postDetailsPath slug}}">{{pluralize commentsCount "comment"}}</a></td>
+			<td><a href="/coderecipe/{{slug}}">{{pluralize commentsCount "comment"}}</a></td>
 			<td> {{formatDate submitted}}</td>
 	  </tr>
   {{/with}}
