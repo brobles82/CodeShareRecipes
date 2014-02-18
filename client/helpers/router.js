@@ -95,6 +95,8 @@ Router.map(function() {
   this.route('newPosts', {path: '/coderecipe/last', fastRender: true});
   this.route('bestPosts', {path: '/coderecipe/top', fastRender: true});
   
+  this.route('login',{path: '/login', fastRender:true});
+  
   this.route('postAuthor', {
     path: '/coderecipe/author/:author',
     controller: PostsAuthorController
