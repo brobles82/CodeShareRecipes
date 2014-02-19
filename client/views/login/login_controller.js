@@ -4,11 +4,12 @@ Template.login.events({
     
     console.log(tmp.find('.loginUsername').value.trim());
     
-    if (!tmp.find('.loginUsername').value.trim())
-      return;
-    
-    if (!tmp.find('.loginPassword').value.trim())
-      return;
+    if (!tmp.find('.loginUsername').value.trim()) {
+      return throwError('Please input username');
+    }
+    if (!tmp.find('.loginPassword').value.trim()) {
+      return throwError('Please input the password');
+    }
     
     Meteor.loginWithPassword(tmp.find('.loginUsername').value, tmp.find('.loginPassword').value, function(err){
       if (err) {
@@ -28,15 +29,13 @@ Template.login.events({
     //Username validation
     options.username = tmp.find('.signup-username').value;
       if (!options.username.trim()) {
-        //errorText = 'Missing Username';
-        return;
+        return throwError('Missing Username');
       }
     
     //Password validation
     options.password = tmp.find('.signup-password').value;
       if (!options.password.trim()) {
-        //alert('Missing Password');
-        return; 
+        return throwError('Missing Password');
       }
     
     //email validation
@@ -44,30 +43,18 @@ Template.login.events({
       var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
       if (re.test(options.email)===false) {
-        //alert('Missing or invalid email');
-        //errorText = 'Missing Username';
-        return; 
+        return throwError('Missing or invalid email');
       }
     
     Accounts.createUser(options, function(err){
       if(err) {
-        alert(err.reason);
+        return throwError(err.reason);
       } else {
         Meteor.loginWithPassword(options.username, options.password, function(err){
-          if (err) {
+          if (err)
             alert('User Dont Exist');
-          } else {
-           /* self.set('newusername', '');
-            self.set('newemail', '');
-            self.set('newpassword', '');
-            self.set('token', Meteor.userId());
-            App.Router.router.handleURL('recipes.index');*/
-          }
         });
       }
     });
-    
   }
-  
-
 });

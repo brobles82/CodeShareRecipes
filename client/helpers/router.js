@@ -13,6 +13,10 @@ var filters = {
      this.stop();
    }
   },
+  
+  clearErrors: function() {
+    Errors.remove({seen: true});
+  },
 
   resetScroll: function () {
     var scrollTo = window.currentScroll || 0;
@@ -44,6 +48,7 @@ if(Meteor.isClient){
   Router.before(filters.isLoggedIn, {only: ['postSubmit']});
   //Router.after(filters.resetScroll, {except:['posts_top', 'posts_new', 'posts_best', 'posts_pending', 'posts_category', 'all-users']});
   Router.after(filters.resetScroll, {except:[]});
+  Router.before(function() { clearErrors() });
 }
 
 PostsAuthorController = FastRender.RouteController.extend({
@@ -119,9 +124,3 @@ if(Meteor.isServer) {
     this.subscribe('notifications');
   });
 }
-
-Meteor.startup(function(){
-  NProgress.start();
-  // Do something, like loading...
-  NProgress.done();
-});
