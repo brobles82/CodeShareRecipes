@@ -14,6 +14,14 @@ var filters = {
    }
   },
 
+  clearTag: function () {
+    Session.set('currentPostTag', null);
+  },
+
+  clearAuthor: function () {
+    Session.set('currentPostAuthor',null);
+  },
+
   clearErrors: function() {
     Errors.remove({seen: true});
   },
@@ -26,7 +34,6 @@ var filters = {
 
   isLoggedIn: function() {
     if (!(Meteor.loggingIn() || Meteor.user())) {
-      //throwError(i18n.t('Please Sign In First.'))
       this.render('accessDenied');
       this.stop(); 
     }
@@ -44,6 +51,8 @@ if(Meteor.isClient){
   Router.before(filters.nProgressHook, {except:[]});
 
   Router.before(filters.isLoggedIn, {only: ['postSubmit']});
+  Router.before(filters.clearAuthor, {except: ['postAuthor']});
+  Router.before(filters.clearTag, {except: ['postTag']});
   Router.after(filters.resetScroll, {except:[]});
   Router.before(function() { clearErrors() });
 }
@@ -51,6 +60,7 @@ if(Meteor.isClient){
 PostsAuthorController = FastRender.RouteController.extend({
   template: 'postAuthor',
   waitOn: function () {
+      Session.set('currentPostAuthor', this.params.author);
     return [
       Meteor.subscribe('authorPosts', this.params.author, 10)
     ];
@@ -63,6 +73,7 @@ PostsAuthorController = FastRender.RouteController.extend({
 PostsTagController = FastRender.RouteController.extend({
   template: 'postTag',
   waitOn: function () {
+    Session.set('currentPostTag',this.params.tag);
     return Meteor.subscribe('tagPosts', this.params.tag, 10);
   },
 

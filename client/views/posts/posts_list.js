@@ -38,7 +38,7 @@ Template.bestPosts.helpers({
 Template.postsList.helpers({
   postsWithRank: function() {
     var i = 0, options = {sort: this.sort, limit: this.handle.limit()};
-    
+
     if (Session.get('currentPostAuthor')) {
       return Posts.find({author: Session.get('currentPostAuthor')}, options).map(function(post) {
         post._rank = i;
@@ -55,13 +55,21 @@ Template.postsList.helpers({
       });
     }
 
+    if  (Session.get('currentPostAuthor')) {
+      return Posts.find({tags: Session.get('currentPostTag')}, options).map(function(post) {
+        post._rank = i;
+        i += 1;
+        return post;
+      });
+    }
+
     //If not session set
       return Posts.find({}, options).map(function(post) {
         post._rank = i;
         i += 1;
         return post;
       });
-    
+
   },
 
   postsReady: function() {
@@ -86,9 +94,3 @@ Template.postsList.events({
     this.handle.loadNextPage();
   }
 });
-
-Template.postsList.rendered = function () {
-  $("body, html").animate({
-    scrollTop: 0
-  }, 300);
-};

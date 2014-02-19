@@ -32,7 +32,7 @@ Template.postSubmit.events({
 });
 
 Template.postSubmit.rendered = function () {
-  
+
   $('#tags').tagsInput({});
 
   $('textarea#wmd-input').autoResize({

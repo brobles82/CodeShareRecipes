@@ -19,7 +19,7 @@ Meteor.publish('singePost', function(slug) {
 });
 
 Meteor.publish('comments', function(slug) {
-	a = Posts.findOne({slug: slug});
+  a = Posts.findOne({slug: slug});
   return Comments.find({postId: a._id});
 });
 
