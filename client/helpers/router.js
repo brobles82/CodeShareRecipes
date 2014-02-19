@@ -13,7 +13,7 @@ var filters = {
      this.stop();
    }
   },
-  
+
   clearErrors: function() {
     Errors.remove({seen: true});
   },
@@ -38,15 +38,12 @@ var filters = {
       this.stop();
     }
   }
-
 }
 
 if(Meteor.isClient){
   Router.before(filters.nProgressHook, {except:[]});
-  
-  //Router.before(filters.isLoggedIn, {only: ['comment_reply','post_submit']});
+
   Router.before(filters.isLoggedIn, {only: ['postSubmit']});
-  //Router.after(filters.resetScroll, {except:['posts_top', 'posts_new', 'posts_best', 'posts_pending', 'posts_category', 'all-users']});
   Router.after(filters.resetScroll, {except:[]});
   Router.before(function() { clearErrors() });
 }
@@ -55,7 +52,6 @@ PostsAuthorController = FastRender.RouteController.extend({
   template: 'postAuthor',
   waitOn: function () {
     return [
-      // remove Session.get('currentPostAuthor')
       Meteor.subscribe('authorPosts', this.params.author, 10)
     ];
   },
@@ -69,7 +65,7 @@ PostsTagController = FastRender.RouteController.extend({
   waitOn: function () {
     return Meteor.subscribe('tagPosts', this.params.tag, 10);
   },
-  
+
   data: function () {
     return tagHandle = Meteor.subscribeWithPagination('tagPosts', this.params.tag, 10);
   }
@@ -82,13 +78,12 @@ PostController = FastRender.RouteController.extend({
       Meteor.subscribe('singePost',this.params.slug),
       Meteor.subscribe('comments', this.params.slug)
     ];
-   
+
   },
   data: function () {
     return post = Posts.findOne({slug: this.params.slug});
   }
 });
-
 
 Router.map(function() {
   this.route('home', {path: '/', fastRender: true});
@@ -96,28 +91,25 @@ Router.map(function() {
   this.route('features', {path: '/features', fastRender: true});
   this.route('search', {path: '/search', fastRender: true});
   this.route('postSubmit', {path: '/submit', fastRender: true});
-  
   this.route('newPosts', {path: '/coderecipe/last', fastRender: true});
   this.route('bestPosts', {path: '/coderecipe/top', fastRender: true});
-  
   this.route('login',{path: '/login', fastRender:true});
-  
+
   this.route('postAuthor', {
     path: '/coderecipe/author/:author',
     controller: PostsAuthorController
   });
-  
+
   this.route('postTag', {
     path: '/coderecipe/tag/:tag',
     controller: PostsTagController
   });
-  
+
   this.route('postDetails', {
     path: '/coderecipe/:slug',
     controller: PostController
   });
 });
-
 
 if(Meteor.isServer) {
   FastRender.onAllRoutes(function() {
