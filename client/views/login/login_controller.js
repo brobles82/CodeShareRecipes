@@ -1,8 +1,11 @@
 Template.login.events({
+  'click #logOut' : function(e, tmp) {
+    e.preventDefault();
+    Meteor.logout();
+  },
+
   'click #login-form' : function(e, tmp) {
     e.preventDefault();
-    
-    console.log(tmp.find('.loginUsername').value.trim());
     
     if (!tmp.find('.loginUsername').value.trim()) {
       return throwError('Please input username');

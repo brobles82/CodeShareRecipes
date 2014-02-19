@@ -1,45 +1,45 @@
 <template name="login">
-<div class="container-fluid sidebar_content">
-		{{#if currentUser}}
-			<br>
-  		Welcome {{currentUser.username}} <br><br>
+  <div class="container-fluid sidebar_content">
+    {{#if currentUser}}
+      <br>
+      Welcome {{currentUser.username}} <br><br>
 
-  		<button class="btn btn-primary">Logout</button>
+      <button id='logOut' class="btn btn-primary">Logout</button>
   		<br><br><br>
 		{{else}}
 
-	<div class="row-fluid">
-		<div class="span8">
-			<br>
-			{{> errors}}
-			<div class="row-fluid">
-				<div class="span12">
-					<h2><i class="icon-key"></i>&nbsp;&nbsp;Login/Register</h2>
-					<p>
-						You must login or create an account in order to post code recipes — this will enable you to view, remove, or relist your recipes in the future.
-					</p>
-				</div>
-			</div>
+	    <div class="row-fluid">
+		    <div class="span8">
+			    <br>
+			    {{> errors}}
+			  <div class="row-fluid">
+				  <div class="span12">
+					  <h2><i class="icon-key"></i>&nbsp;&nbsp;Login/Register</h2>
+					  <p>
+						  You must login or create an account in order to post code recipes —
+              this will enable you to view, remove, or relist your recipes in the future.
+					  </p>
+				  </div>
+			  </div>
+		
+			  <hr>
 			
-			<hr>
-			
-			<div class="row-fluid">
-				
-				<div class="span6">
-					<h2>Create a free account</h2>
+			  <div class="row-fluid">	
+				  <div class="span6">
+					  <h2>Create a free account</h2>
 					
-					<form class="">
-						<fieldset>
-							<div class="control-group">
-								<label class="control-label">Username</label>
-								<div class="controls">
-									<input class='signup-username' type="text" placeholder="Enter your username">
-								</div>
-							</div>           
-							<div class="control-group">
+					  <form class="">
+						  <fieldset>
+							  <div class="control-group">
+								  <label class="control-label">Username</label>
+								  <div class="controls">
+									  <input class='signup-username' type="text" placeholder="Enter your username">
+								  </div>
+							  </div>           
+							  <div class="control-group">
 								<label class="control-label">Email</label>
 								<div class="controls">
-									<input class='signup-email' type="text" placeholder="Enter your username">
+									<input class='signup-email' type="text" placeholder="Enter your email">
 								</div>
 							</div>
 							<div class="control-group">
@@ -63,13 +63,13 @@
 							<div class="control-group">
 								<label class="control-label">Username</label>
 								<div class="controls">
-									<input class='loginUsername'value=username type="text" placeholder="Enter your username">
+									<input class='loginUsername' type="text" placeholder="Enter your username">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">Password</label>
 								<div class="controls">
-									<input class='loginPassword' value=password placeholder="Enter your password" type="password">
+									<input class='loginPassword' placeholder="Enter your password" type="password">
 								</div>
 								</div>
 
