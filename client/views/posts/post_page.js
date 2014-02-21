@@ -1,6 +1,6 @@
 Template.postPage.helpers({
   currentPost: function() {
-    return post;//Posts.findOne({slug: Session.get('currentPostSlug')});
+    return post;
   },
 
   ownPost: function() {
@@ -22,31 +22,29 @@ Template.postPage.helpers({
 
 
   formatBody: function(value) {
-  
+
     var safeConverter = Markdown.getSanitizingConverter();
-    
+
     Markdown.Extra.init(safeConverter, {
                   extensions: "all",
                   highlighter: "prettify"
                 });
-                
+
     return safeConverter.makeHtml(value);
   }
 });
 
 Template.postPage.events({
-	'click #delete': function(e) {
+  'click #delete': function(e) {
     e.preventDefault();
     if (confirm("Delete this post?")) {
-      post = Posts.findOne({slug: Session.get('currentPostSlug')});
       Posts.remove(post._id);
-      Meteor.Router.to('bestPosts');
+      Router.go('bestPosts');
     }
   },
 
- 	"click .edit": function (e) {
- 		e.preventDefault();
- 		Session.set('isEditing', true);
- 	}
-  
+  "click .edit": function (e) {
+   e.preventDefault();
+   Session.set('isEditing', true);
+  }
 });

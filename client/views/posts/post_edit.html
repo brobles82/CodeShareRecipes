@@ -1,7 +1,8 @@
 <template name="postEdit">
   <div class="container-fluid main_content">
+    {{> errors}}
     {{#with post}}
-      
+
       <div class="row-fluid">
         <div class="span9">
 
@@ -11,12 +12,12 @@
 
               <!-- Start of the form -->
               <form class="main">
-              
+
               <br>
-              <h3>Code Recipe Title</h3>      
-              
+              <h3>Code Recipe Title</h3>
+
               <h1><input name="title" type="text" value="{{title}}"/></h1>
-              
+
               <br><h3>Current Tags</h3>
 
               <div class="row-fluid">
@@ -26,9 +27,9 @@
                   </div>
                 </div>
               </div>
-              
+
               <br><h3>Code Recipe Body</h3>
-        
+
               <div class="row-fluid">
                 <div class="span12">
                   <div class="control-group">
@@ -40,9 +41,9 @@
                   </div>
                 </div>
               </div>
-        
+
               <br><h3>Preview</h3>
-        
+
               <div class="row-fluid">
                 <div class="span12">
                   <div class="control-group">
@@ -50,9 +51,9 @@
                   </div>
                 </div>
               </div>
-              
+
               <br><h3>Jsbin link</h3>
-        
+
               <div class="row-fluid">
                 <div class="span12">
                   <div class="control-group">
@@ -60,29 +61,18 @@
                   </div>
                 </div>
               </div>
-              
           </div>
-                    </div>
-        </div>
-    
+       </div>
+     </div>
+
         <div class="span3">
           <br>
           <div class="row-fluid">
-            
               <div class="span12">
                 <input type="submit" value="Submit" class="span6 btn btn-primary btn-large post_job apply_now scroll"/>
                 <br><br>
                 <a style="background: #d9534f;" class="btn btn-large post_job apply_now scroll cancel">Cancel</a>
               </div>
-            
-
-            <!-- <div class="span12">
-              <br>
-              <ul class="nav nav-tabs nav-stacked">
-                <li><a href="#"><i class="icon-envelope"></i> Email</a></li>
-                <li><a href="#"><i class="icon-share"></i> Share</a></li>
-              </ul>
-            </div> -->
           </div>
         </div>
         </form>

@@ -1,14 +1,14 @@
 Template.postEdit.helpers({
   post: function() {
-    return Posts.findOne({slug: Session.get('currentPostSlug')});
-  }
+    return post;
+  },
 });
 
 Template.postEdit.events({
   'submit form': function(e) {
     e.preventDefault();
 
-    var currentPostId = Posts.findOne({slug: Session.get('currentPostSlug')})._id;
+    var currentPostId = post._id;
 
     var preview = $(e.target).find('[name=jsbinlink]').val();
     if(!preview.match(/^http:\/\/(?:.*?)\.?jsbin\.com\/.+$/)) {
@@ -26,7 +26,7 @@ Template.postEdit.events({
       messageHeight: $('#wmd-input').css('height'),
       tags: tags
     }
-    
+
     if (postProperties.tags.valueOf() == "") {
        throwError("You need tag your code");
        return;
@@ -37,33 +37,29 @@ Template.postEdit.events({
       throwError("Title can't be blank");
       return;
     }
-    
+
     if (!postProperties.message) {
       throwError("Please fill in a message");
       return;
     }
-    
-    Posts.update(currentPostId, {$set: postProperties}, function(error) {
+
+    Posts.update(currentPostId, {$set: postProperties}, function(error, data) {
       if (error) {
         // display the error to the user
         throwError(error.reason);
       } else {
         Session.set('isEditing', false);
-        Session.set('currentPostSlug', postProperties.slug);
 
         //Update search        
         Spomet.update(new Spomet.Findable(postProperties.title, 'title', currentPostId, 'post', new Date().getTime()));
         Spomet.update(new Spomet.Findable(postProperties.message, 'message', currentPostId, 'post', new Date().getTime()));
-        
-
-        Meteor.Router.to('postDetails', Session.get('currentPostSlug'));
+        Router.go('/coderecipe/'+ postProperties.slug);
       }
     });
   },
-  
+
   'click .cancel': function(e) {
     e.preventDefault();
-    
     Session.set('isEditing', false);
   }
 });
