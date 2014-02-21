@@ -27,6 +27,7 @@ var filters = {
   },
 
   resetScroll: function () {
+    Meteor.subscribe('notifications')
     var scrollTo = window.currentScroll || 0;
     $('body').scrollTop(scrollTo);
     $('body').css("min-height", 0);
@@ -120,9 +121,3 @@ Router.map(function() {
     controller: PostController
   });
 });
-
-if(Meteor.isServer) {
-  FastRender.onAllRoutes(function() {
-    this.subscribe('notifications');
-  });
-}
