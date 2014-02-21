@@ -34,7 +34,7 @@ var filters = {
 
   isLoggedIn: function() {
     if (!(Meteor.loggingIn() || Meteor.user())) {
-      this.render('accessDenied');
+      this.render('login');
       this.stop(); 
     }
   },
@@ -49,7 +49,6 @@ var filters = {
 
 if(Meteor.isClient){
   Router.before(filters.nProgressHook, {except:[]});
-
   Router.before(filters.isLoggedIn, {only: ['postSubmit']});
   Router.before(filters.clearAuthor, {except: ['postAuthor']});
   Router.before(filters.clearTag, {except: ['postTag']});
