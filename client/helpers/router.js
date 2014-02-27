@@ -67,7 +67,24 @@ PostsAuthorController = FastRender.RouteController.extend({
   },
   data: function () {
     return authorHandle = Meteor.subscribeWithPagination('authorPosts', this.params.author, 10);
-  }
+  },
+  after: function() {
+      var author;
+      if (!Meteor.isClient) {
+        return;
+      }
+      author = this.params.author;
+      SEO.set({
+        title: 'written by ' + author + ' - CodeShareRecipes',
+        meta: {
+          'description': 'Code Recipe tutorials written by ' + author
+        },
+        og: {
+          title: 'CodeShareRecipes',
+          'description': 'CodeShareRecipes - Code tutorial recipes, share your knowledge improve your learning'
+        }
+      });
+    }
 });
 
 PostsTagController = FastRender.RouteController.extend({
@@ -79,7 +96,25 @@ PostsTagController = FastRender.RouteController.extend({
 
   data: function () {
     return tagHandle = Meteor.subscribeWithPagination('tagPosts', this.params.tag, 10);
-  }
+  },
+
+  after: function() {
+      var author;
+      if (!Meteor.isClient) {
+        return;
+      }
+      tag = this.params.tag;
+      SEO.set({
+        title: 'Listed by tag ' + tag + ' - CodeShareRecipes',
+        meta: {
+          'description': 'Code Recipe tutorials by tag - ' + tag
+        },
+        og: {
+          title: 'CodeShareRecipes',
+          'description': 'CodeShareRecipes - Code tutorial recipes, share your knowledge improve your learning'
+        }
+      });
+    }
 });
 
 PostController = FastRender.RouteController.extend({
@@ -93,7 +128,26 @@ PostController = FastRender.RouteController.extend({
   },
   data: function () {
     return post = Posts.findOne({slug: this.params.slug});
-  }
+  },
+
+  after: function() {
+    var post = Posts.findOne({slug: this.params.slug});
+
+    if (!Meteor.isClient) {
+      return;
+    }
+
+    SEO.set({
+      title: post.title + ' - CodeShareRecipes',
+      meta: {
+        'description': post.title +  ' - ' + post.message
+      },
+        og: {
+          title: 'CodeShareRecipes',
+          'description': 'CodeShareRecipes - Code tutorial recipes, share your knowledge improve your learning'
+        }
+      });
+    }
 });
 
 Router.map(function() {

@@ -1,4 +1,4 @@
-Comments = new Meteor.SmartCollection('comments');
+Comments = new Meteor.Collection('comments');
 
 Meteor.methods({
   comment: function(commentAttributes) {

@@ -10,7 +10,6 @@ spin
 paginated-subscription
 urlify2
 spomet
-smart-collections
 iron-router
 fast-render
 accounts-base
@@ -18,4 +17,4 @@ accounts-ui-bootstrap-dropdown
 accounts-password
 nprogress
 HTML5-History-API
-appcache
+ms-seo

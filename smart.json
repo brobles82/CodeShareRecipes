@@ -3,11 +3,11 @@
     "spin": {},
     "paginated-subscription": {},
     "urlify2": {},
-    "smart-collections": {},
     "iron-router": {},
     "fast-render": {},
     "accounts-ui-bootstrap-dropdown": {},
     "nprogress": {},
-    "HTML5-History-API": {}
+    "HTML5-History-API": {},
+    "ms-seo": {}
   }
 }
