@@ -39,24 +39,16 @@ Template.postsList.helpers({
   postsWithRank: function() {
     var i = 0, options = {sort: this.sort, limit: this.handle.limit()};
 
-    if (Session.get('currentPostAuthor')) {
-      return Posts.find({author: Session.get('currentPostAuthor')}, options).map(function(post) {
+    if (list === 'author') {
+      return Posts.find({author: author}, options).map(function(post) {
         post._rank = i;
         i += 1;
         return post;
       });
     }
 
-    if (Session.get('currentPostTag')) {
-      return Posts.find({tags: Session.get('currentPostTag')}, options).map(function(post) {
-        post._rank = i;
-        i += 1;
-        return post;
-      });
-    }
-
-    if  (Session.get('currentPostAuthor')) {
-      return Posts.find({tags: Session.get('currentPostTag')}, options).map(function(post) {
+    if (list === 'tag') {
+      return Posts.find({tags: tag}, options).map(function(post) {
         post._rank = i;
         i += 1;
         return post;
@@ -69,7 +61,6 @@ Template.postsList.helpers({
         i += 1;
         return post;
       });
-
   },
 
   postsReady: function() {

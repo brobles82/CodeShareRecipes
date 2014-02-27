@@ -1,7 +1,7 @@
 NewPostsController = FastRender.RouteController.extend({
   template: 'newPosts',
   waitOn: function () {},
-  data: function () {},
+  data: function () { return list = 'none'},
 
   after: function() {
     if (!Meteor.isClient) {

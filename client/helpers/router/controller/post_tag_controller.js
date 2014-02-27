@@ -1,12 +1,11 @@
 PostsTagController = FastRender.RouteController.extend({
   template: 'postTag',
   waitOn: function () {
-    Session.set('currentPostTag',this.params.tag);
     return Meteor.subscribe('tagPosts', this.params.tag, 10);
   },
 
   data: function () {
-    return tagHandle = Meteor.subscribeWithPagination('tagPosts', this.params.tag, 10);
+    return tag = this.params.tag, list='tag', tagHandle = Meteor.subscribeWithPagination('tagPosts', this.params.tag, 10);
   },
 
   after: function() {

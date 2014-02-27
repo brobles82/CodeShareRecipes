@@ -1,13 +1,12 @@
 PostsAuthorController = FastRender.RouteController.extend({
   template: 'postAuthor',
   waitOn: function () {
-      Session.set('currentPostAuthor', this.params.author);
     return [
       Meteor.subscribe('authorPosts', this.params.author, 10)
     ];
   },
   data: function () {
-    return authorHandle = Meteor.subscribeWithPagination('authorPosts', this.params.author, 10);
+    return author=this.params.author, list='author',authorHandle = Meteor.subscribeWithPagination('authorPosts', this.params.author, 10);
   },
   after: function() {
       var author;

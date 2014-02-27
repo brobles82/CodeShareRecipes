@@ -14,14 +14,6 @@ var filters = {
    }
   },
 
-  clearTag: function () {
-    Session.set('currentPostTag', null);
-  },
-
-  clearAuthor: function () {
-    Session.set('currentPostAuthor',null);
-  },
-
   clearErrors: function() {
     Errors.remove({seen: true});
   },
@@ -51,8 +43,6 @@ var filters = {
 if(Meteor.isClient){
   Router.before(filters.nProgressHook, {except:[]});
   Router.before(filters.isLoggedIn, {only: ['postSubmit']});
-  Router.before(filters.clearAuthor, {except: ['postAuthor']});
-  Router.before(filters.clearTag, {except: ['postTag']});
   Router.after(filters.resetScroll, {except:[]});
   Router.before(function() { clearErrors() });
 }

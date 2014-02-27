@@ -1,7 +1,7 @@
 BestPostsController = FastRender.RouteController.extend({
   template: 'bestPosts',
   waitOn: function () {},
-  data: function () {},
+  data: function () { return list = 'none'},
 
   after: function() {
     if (!Meteor.isClient) {
