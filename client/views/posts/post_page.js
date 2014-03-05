@@ -44,7 +44,7 @@ Template.postPage.events({
   },
 
   "click .edit": function (e) {
-   e.preventDefault();
-   Session.set('isEditing', true);
+    e.preventDefault();
+    creditPurchase.setState(0);
   }
 });
