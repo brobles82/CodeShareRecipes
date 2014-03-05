@@ -45,6 +45,6 @@ Template.postPage.events({
 
   "click .edit": function (e) {
     e.preventDefault();
-    creditPurchase.setState(0);
+    reactiveVariable.setState(0);
   }
 });

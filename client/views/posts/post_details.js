@@ -1,11 +1,11 @@
 Template.postDetails.created = function() {
-return creditPurchase = new CreditPurchase();
+return reactiveVariable = new ReactiveVariable();
 
 };
 
 
 Template.postDetails.helpers({
   editing: function() {
-  return creditPurchase.getState() === CreditPurchase.ORDER_STATE;  
+  return reactiveVariable.getState() === ReactiveVariable.ORDER_STATE;  
 }
 });

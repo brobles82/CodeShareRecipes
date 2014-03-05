@@ -3,70 +3,36 @@ bestPostsHandle = Meteor.subscribeWithPagination('bestPosts', 10);
 
 if (Meteor.isClient) {
 
-CreditPurchase = {};
- 
-CreditPurchase = (function() {
- 
-  CreditPurchase.ORDER_STATE = 0;
- 
-  CreditPurchase.prototype._deps = {};
- 
-  CreditPurchase.prototype.amountInt = 0;
- 
-  CreditPurchase.prototype.state = 1;
- 
-  function CreditPurchase() {
+  ReactiveVariable = {};
+
+  ReactiveVariable = (function() {
+
+  ReactiveVariable.ORDER_STATE = 0;
+
+  ReactiveVariable.prototype._deps = {};
+
+  ReactiveVariable.prototype.state = 1;
+
+  function ReactiveVariable() {
     this._deps['state'] = new Deps.Dependency;
   }
- 
-  CreditPurchase.prototype.getState = function() {
+
+  ReactiveVariable.prototype.getState = function() {
     this._deps['state'].depend();
     return this.state;
   };
- 
-  CreditPurchase.prototype.setState = function(value) {
+
+  ReactiveVariable.prototype.setState = function(value) {
     if (value === this.state) {
       return;
     }
     this.state = value;
     return this._deps['state'].changed();
   };
- 
-  CreditPurchase.prototype.getAmountInt = function() {
-    return this.amountInt;
-  };
- 
-  CreditPurchase.prototype.setAmountInt = function(value) {
-    return this.amountInt = value;
-  };
- 
-  CreditPurchase.prototype.getVat = function() {
-    return Math.round(this.amountInt * 0.19);
-  };
- 
-  CreditPurchase.prototype.getTotal = function() {
-    return this.getAmountInt() + this.getVat();
-  };
- 
-  CreditPurchase.prototype.getName = function() {
-    return this.name;
-  };
- 
-  CreditPurchase.prototype.setName = function(value) {
-    return this.name = value;
-  };
- 
-  CreditPurchase.prototype.getAddress = function(value) {
-    return this.address;
-  };
- 
-  CreditPurchase.prototype.setAddress = function(value) {
-    return this.address = value;
-  };
- 
-  return CreditPurchase;
- 
+
+  return ReactiveVariable;
+
 })();
 
-creditPurchase = null;
+  reactiveVariable = null;
 }

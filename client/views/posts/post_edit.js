@@ -48,7 +48,7 @@ Template.postEdit.events({
         // display the error to the user
         throwError(error.reason);
       } else {
-        creditPurchase.setState(1);
+        reactiveVariable.setState(1);
 
         //Update search        
         Spomet.update(new Spomet.Findable(postProperties.title, 'title', currentPostId, 'post', new Date().getTime()));
@@ -60,7 +60,7 @@ Template.postEdit.events({
 
   'click .cancel': function(e) {
     e.preventDefault();
-    creditPurchase.setState(1);
+    reactiveVariable.setState(1);
   }
 });
 
