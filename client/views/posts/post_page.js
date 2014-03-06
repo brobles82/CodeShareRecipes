@@ -1,3 +1,23 @@
+Template.postPage.rendered = function () {
+  $('#share').sharrre({
+    share: {
+      googlePlus: true,
+      twitter: true
+    },
+    buttons: {
+      googlePlus: {size: 'tall', annotation:'bubble'},
+      twitter: {count: 'vertical', via: '_JulienH'}
+    },
+    hover: function(api, options){
+      $(api.element).find('.buttons').show();
+    },
+    hide: function(api, options){
+      $(api.element).find('.buttons').hide();
+    },
+    enableTracking: true
+  });
+};
+
 Template.postPage.helpers({
   currentPost: function() {
     return post;
