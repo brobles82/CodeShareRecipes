@@ -68,6 +68,11 @@ Router.map(function() {
     controller: SearchController
   });
 
+  this.route('search2', {
+    path: '/search2',
+    controller: Search2Controller
+  });
+
   this.route('postSubmit', {
     path: '/submit',
     controller: PostSubmitController

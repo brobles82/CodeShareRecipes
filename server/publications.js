@@ -1,3 +1,7 @@
+Meteor.publish('search', function() {
+  return Posts.find({}, {sort: {submitted: -1}});
+});
+
 Meteor.publish('newPosts', function(limit) {
   return Posts.find({}, {sort: {submitted: -1}, limit: limit});
 });

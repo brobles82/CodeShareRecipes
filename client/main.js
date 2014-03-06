@@ -17,6 +17,7 @@ if (Meteor.isClient) {
     this._deps['state'] = new Deps.Dependency;
   }
 
+  //Set Getter and setter for State
   ReactiveVariable.prototype.getState = function() {
     this._deps['state'].depend();
     return this.state;

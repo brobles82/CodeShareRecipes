@@ -14,94 +14,80 @@
   {{> postsList options}}
 </template>
 
-
-
 <template name="postsList">
-	<div class="container-fluid main_content">
+  <div class="container-fluid main_content">
+    <div class="row-fluid">
+      <br>
+      <div class="span12 no_margin_left">
+        <div class="row-fluid">
+          <div class="span5">
+            <h3> <a href="{{pathFor 'newPosts'}}">Last Recipes</a> | <a href="{{pathFor 'bestPosts'}}">Top Recipes</a> </h3>
+              {{> spometSearch}}
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
 
-		<div class="row-fluid">
-			
-			<br>
-		
-			<div class="span12 no_margin_left">
-				<div class="row-fluid">
-					<div class="span5">
-						<h3> <a href="{{pathFor 'newPosts'}}">Last Recipes</a> | <a href="{{pathFor 'bestPosts'}}">Top Recipes</a> </h3>
-						{{> spometSearch}}
-					</div>
-				</div>
-				
-				<br>
-			</div>
-		</div>
+    <div class="row-fluid">
+      <div class="span9">
+        <h2>Recipes listings found</h2>
 
-		<div class="row-fluid">
-			<div class="span9">
-		
-			<h2>Recipes listings found</h2>
+        {{#if searchResults}}
+          <table class="table table-striped">
+            <tbody>
+              <table class="table table-striped">
+                <tbody>
+                  {{> searchResult}}
+                </tbody>
+              </table>
+            </tbody>
+          </table>
+        {{else}}
 
-			{{#if searchResults}}
-				<table class="table table-striped">
-					<tbody>
-						<table class="table table-striped">
-							<tbody>
-							  {{#each searchResults}}
-									{{> searchResult}}
-		    				{{/each}}
-							</tbody>
-						</table>
-					</tbody>	
-				</table>
-			{{else}}
+          <table class="table table-striped">
+            <tbody>
+              <table class="table table-striped">
+                <tbody>
+                  {{#each postsWithRank}}
+                    {{> postItem}}
+                  {{/each}}
+                </tbody>
+              </table>
+            </tbody>
+          </table>
+          <table class="table table-striped">
+            <tbody>
+              <table class="table table-striped">
+                <tbody>
+                  {{#if postsReady}}
 
-				<table class="table table-striped">
-					<tbody>
-						<table class="table table-striped">
-							<tbody>
-							  {{#each postsWithRank}}
-		      				{{> postItem}}
-		    				{{/each}}
-		    
+                    {{#unless allPostsLoaded}}
+                      <tr></tr><a class="load-more btn btn-large" href="#">Load more</a></tr>
+                    {{/unless}}
+                  {{else}}
+                    <div>{{> spinner}}</div>
+                  {{/if}}
+                </tbody>
+              </table>
+            </tbody>
+          </table>
+        {{/if}}
+      </div>
 
-							</tbody>
-						</table>
-					</tbody>	
-				</table>
-				<table class="table table-striped">
-					<tbody>
-						<table class="table table-striped">
-							<tbody>
-							  {{#if postsReady}}
-
-		      				{{#unless allPostsLoaded}}
-		      					
-		    						<tr></tr><a class="load-more btn btn-large" href="#">Load more</a></tr>
-		      				{{/unless}}
-		    				{{else}}
-		     					<div>{{> spinner}}</div>
-		   					{{/if}}
-							</tbody>
-						</table>
-					</tbody>	
-				</table>
-			{{/if}}
-		
-	</div>
-		
-	<div class="span3">
-		<h2>&nbsp;</h2>
-		
-		<div class="row-fluid">
-			<div class="span12 center">
-				<tr>
-    			<td>
-    				<a href='/submit'  class="btn btn-primary btn-large post_job">Code a Recipe<br /><small>(it's free!)</small></a>
-    			</td>
-				<td>
-			</div>
-		</div>
-	</div>
-	</div>
-	</div>
-{{> footer}}
+      <div class="span3">
+        <h2>&nbsp;</h2>
+        <div class="row-fluid">
+          <div class="span12 center">
+            <tr>
+              <td>
+                <a href='/submit'  class="btn btn-primary btn-large post_job">Code a Recipe<br /><small>(it's free!)</small></a>
+              </td>
+            <td>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{> footer}}
 </template>
