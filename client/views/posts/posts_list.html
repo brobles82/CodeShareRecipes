@@ -22,7 +22,7 @@
         <div class="row-fluid">
           <div class="span5">
             <h3> <a href="{{pathFor 'newPosts'}}">Last Recipes</a> | <a href="{{pathFor 'bestPosts'}}">Top Recipes</a> </h3>
-              {{> spometSearch}}
+            <input type="text" id='searchForm'></input>
           </div>
         </div>
         <br>
@@ -32,18 +32,6 @@
     <div class="row-fluid">
       <div class="span9">
         <h2>Recipes listings found</h2>
-
-        {{#if searchResults}}
-          <table class="table table-striped">
-            <tbody>
-              <table class="table table-striped">
-                <tbody>
-                  {{> searchResult}}
-                </tbody>
-              </table>
-            </tbody>
-          </table>
-        {{else}}
 
           <table class="table table-striped">
             <tbody>
@@ -72,7 +60,6 @@
               </table>
             </tbody>
           </table>
-        {{/if}}
       </div>
 
       <div class="span3">

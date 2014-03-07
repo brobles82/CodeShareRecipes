@@ -1,22 +1,48 @@
-<template name="searchResult">
-  <p id='icoco'> search </p>
-  <input type="text" id='searchForm'></input>
+<template name="search">
+  <div class="container-fluid main_content">
+    <div class="row-fluid">
+      <br>
+      <div class="span12 no_margin_left">
+        <div class="row-fluid">
+          <div class="span5">
+            <h3> <a href="{{pathFor 'newPosts'}}">Last Recipes</a> | <a href="{{pathFor 'bestPosts'}}">Top Recipes</a> </h3>
+            <input type="text" id='searchForm'></input>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
 
-  {{#each searchResult}}
-    <tr>
-      <td>
-        <strong><a href="/coderecipe/{{slug}}" class="discuss">{{title}}</a> 
-          {{#each tags}}
-            <div class='label label-info'>
-              <a style='color: rgb(255, 255, 255);' href="/coderecipe/tag/{{.}}">{{.}}</a>
-           </div>
-          {{/each}}
-          </strong><br>
+    <div class="row-fluid">
+      <div class="span9">
+        <h2>Recipes listings found</h2>
 
-          {{pluralize votes "Vote"}}, Coded by <a href="/coderecipe/author/{{author}}">{{author}}</a>
-      </td>
-      <td><a href="/coderecipe/{{slug}}">{{pluralize commentsCount "comment"}}</a></td>
-      <td> {{formatDate submitted}}</td>
-    </tr>
-  {{/each}}
+          <table class="table table-striped">
+            <tbody>
+              <table class="table table-striped">
+                <tbody>
+                  {{#each searchResult}}
+                    {{> postItem}}
+                  {{/each}}
+                </tbody>
+              </table>
+            </tbody>
+          </table>
+      </div>
+
+      <div class="span3">
+        <h2>&nbsp;</h2>
+        <div class="row-fluid">
+          <div class="span12 center">
+            <tr>
+              <td>
+                <a href='/submit'  class="btn btn-primary btn-large post_job">Code a Recipe<br /><small>(it's free!)</small></a>
+              </td>
+            <td>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{> footer}}
 </template>

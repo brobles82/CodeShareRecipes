@@ -1,18 +1,10 @@
-Template.searchResult.events({
-  'click #icoco' : function (e) {
-    e.preventDefault();
-    Session.set('query', s($('#searchForm').val()));
-  }
-});
-
-Template.searchResult.rendered = function() {
-  s = function(query) {
+//Search algorym
+s = function(querySearch) {
   searchResults = [];
   var results = [];
-  var querySplit = query.split(" ");
 
   Posts.find().fetch().forEach( function (post) {
-    querySplit.forEach(function (word) {
+    querySearch.forEach(function (word) {
       if(post.title.toLowerCase().indexOf(word.toLowerCase()) !== -1 || post.message.toLowerCase().indexOf(word.toLowerCase()) !== -1) {
         results.push(post._id);
         return;
@@ -26,9 +18,20 @@ Template.searchResult.rendered = function() {
   });
 
   return searchResults;
-  };
 };
 
-Template.searchResult.searchResult = function() {
-  return Session.get('query');
+Template.search.searchResult = function() {
+  return s(query);
 };
+
+Template.search.events({
+  'keyup #searchForm' : function (e) {
+    if (e.keyCode == 13) {
+     if (URLify2($('#searchForm').val()) !== '' ) {
+      Router.go('/search/' + URLify2($('#searchForm').val()));
+    } else {
+      Router.go('/coderecipe/last');
+      }
+  }
+  }
+});

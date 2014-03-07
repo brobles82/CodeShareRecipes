@@ -28,7 +28,7 @@ Template.newPosts.helpers({
 
 Template.bestPosts.helpers({
   options: function() {
-    return {  
+    return {
       sort: {votes: -1, submitted: -1},
       handle: bestPostsHandle
     }
@@ -55,7 +55,6 @@ Template.postsList.helpers({
       });
     }
 
-    //If not session set
       return Posts.find({}, options).map(function(post) {
         post._rank = i;
         i += 1;
@@ -68,20 +67,21 @@ Template.postsList.helpers({
   },
 
   allPostsLoaded: function() {
-    return this.handle.ready() &&  
+    return this.handle.ready() &&
       Posts.find().count() < this.handle.loaded();
-  },
-
-  //Search Helpers
-  searchResults: function() {
-    return Spomet.defaultSearch.results();
   }
 });
-
 
 Template.postsList.events({
   'click .load-more': function(e) {
     e.preventDefault();
     this.handle.loadNextPage();
+  },
+
+  'keyup #searchForm' : function (e) {
+    if (e.keyCode== 13) {
+     if (URLify2($('#searchForm').val()) !== '' )
+      Router.go('/search/' + URLify2($('#searchForm').val()));
+    }
   }
 });

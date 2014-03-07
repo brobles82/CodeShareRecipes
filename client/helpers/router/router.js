@@ -64,13 +64,8 @@ Router.map(function() {
   });
 
   this.route('search', {
-    path: '/search',
+    path: '/search/:query',
     controller: SearchController
-  });
-
-  this.route('search2', {
-    path: '/search2',
-    controller: Search2Controller
   });
 
   this.route('postSubmit', {
