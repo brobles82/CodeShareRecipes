@@ -1,7 +1,12 @@
 BestPostsController = FastRender.RouteController.extend({
   template: 'bestPosts',
-  waitOn: function () {},
-  data: function () { return list = 'none'},
+  waitOn: function () {
+    Meteor.subscribe('bestPosts', 10);
+  },
+  data: function () { 
+    return list = 'none',
+           bestPostsHandle = Meteor.subscribeWithPagination('bestPosts',10);
+  },
 
   after: function() {
     if (!Meteor.isClient) {

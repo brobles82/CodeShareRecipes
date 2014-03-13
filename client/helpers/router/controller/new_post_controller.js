@@ -1,7 +1,12 @@
 NewPostsController = FastRender.RouteController.extend({
   template: 'newPosts',
-  waitOn: function () {},
-  data: function () { return list = 'none'},
+  waitOn: function () {
+    Meteor.subscribe('newPosts', 10);
+  },
+  data: function () {
+    return list = 'none'
+                  , newPostsHandle = Meteor.subscribeWithPagination('newPosts',10);
+  },
 
   after: function() {
     if (!Meteor.isClient) {
