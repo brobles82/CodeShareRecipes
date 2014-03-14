@@ -9,7 +9,8 @@
       "fast-render": {},
       "nprogress": {},
       "HTML5-History-API": {},
-      "ms-seo": {}
+      "ms-seo": {},
+      "sitemaps": {}
     },
     "packages": {
       "spin": {
@@ -51,6 +52,16 @@
         "git": "https://github.com/DerMambo/ms-seo",
         "tag": "v0.1.4",
         "commit": "6cd2cad761b03fc0ae0bde23f4d418d2313d84d9"
+      },
+      "sitemaps": {
+        "git": "https://github.com/gadicohen/meteor-sitemaps.git",
+        "tag": "v0.0.15",
+        "commit": "d7425c4e1d01ec13869372faafbf4d11826fe277"
+      },
+      "robots-txt": {
+        "git": "https://github.com/gadicohen/meteor-robots.txt.git",
+        "tag": "v0.0.8",
+        "commit": "dc1be195b8c0cf7d6263235484218911e1bf27d9"
       }
     }
   }
