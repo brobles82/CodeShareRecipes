@@ -22,7 +22,7 @@
         <div class="row-fluid">
           <div class="span5">
             <h3> <a href="{{pathFor 'newPosts'}}">Last Recipes</a> | <a href="{{pathFor 'bestPosts'}}">Top Recipes</a> </h3>
-            <input type="text" id='searchForm'></input>
+            <input type="text" id='searchForm'>
           </div>
         </div>
         <br>
@@ -51,7 +51,7 @@
                   {{#if postsReady}}
 
                     {{#unless allPostsLoaded}}
-                      <tr></tr><a class="load-more btn btn-large" href="#">Load more</a></tr>
+                      <tr><a class="load-more btn btn-large" href="#">Load more</a></tr>
                     {{/unless}}
                   {{else}}
                     <div>{{> spinner}}</div>
@@ -70,7 +70,7 @@
               <td>
                 <a href='/submit'  class="btn btn-primary btn-large post_job">Code a Recipe<br /><small>(it's free!)</small></a>
               </td>
-            <td>
+            </tr>
           </div>
         </div>
       </div>

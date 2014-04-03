@@ -4,7 +4,6 @@
 
       <div class="row-fluid">
         <div class="span9">
-
           <div class="row-fluid">
             <div class="span12">
               <br>
@@ -19,7 +18,8 @@
                       </div>
                     {{/each}}
 
-                  </span><span>&nbsp;&nbsp; {{formatDate submitted}}</span>
+                  </span>
+                  <span>&nbsp;&nbsp; {{formatDate submitted}}</span>
                   <a href="{{pathFor 'newPosts'}}" class="pull-right">
                     <span>←&nbsp;</span><span class="lnk-title">Back</span>
                   </a>
@@ -34,7 +34,6 @@
               </div>
               <br>
 
-
               {{#if jsbinlink}}
                 <iframe src="{{jsbinlink}}" class='span12' frameborder=0 style='height: 350px;'></iframe>  
               {{/if}}
@@ -48,13 +47,11 @@
           <div class="row-fluid">
 
             {{#if ownPost}}
-
               <div class="span12">
                 <a href="#" class="span6 btn btn-primary btn-large post_job apply_now scroll edit">Edit</a>
                 <br><br>
                 <a id='delete' style="background: #d9534f;" class="btn btn-large post_job apply_now scroll">Delete</a>
               </div>
-
             {{/if}}
 
             <div class="span12">
@@ -83,6 +80,6 @@
           {{/if}}
         </div>
       </div>
-  </div>
   {{/with}}
+ </div> 
 </template>

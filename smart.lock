@@ -30,18 +30,18 @@
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.4",
-        "commit": "927bbaed1b87894fb6fb70807f74ff3a5bd89f29"
+        "tag": "v0.7.0",
+        "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
       },
       "fast-render": {
         "git": "https://github.com/arunoda/meteor-fast-render.git",
-        "tag": "v0.1.18",
-        "commit": "dbfc8178594e5f696a39541278aac5dd25d458a0"
+        "tag": "v0.1.23",
+        "commit": "933b9d8992f1c7004f9993b1b15dffe3bac672f3"
       },
       "nprogress": {
         "git": "https://github.com/zhouzhuojie/meteor-nprogress.git",
-        "tag": "v0.0.3",
-        "commit": "ffd1c5dd400af64121197f4e637a215c4b6b1fc7"
+        "tag": "v0.0.4",
+        "commit": "8333206b751a24fac1fbd1b03fa37621bcefe50c"
       },
       "HTML5-History-API": {
         "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
@@ -50,13 +50,18 @@
       },
       "ms-seo": {
         "git": "https://github.com/DerMambo/ms-seo",
-        "tag": "v0.1.4",
-        "commit": "6cd2cad761b03fc0ae0bde23f4d418d2313d84d9"
+        "tag": "v0.2.6",
+        "commit": "1a4ba31a1f6f29009d3941e9dd883829ff4e4b8b"
       },
       "sitemaps": {
         "git": "https://github.com/gadicohen/meteor-sitemaps.git",
         "tag": "v0.0.15",
         "commit": "d7425c4e1d01ec13869372faafbf4d11826fe277"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "tag": "v0.2.2",
+        "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
       },
       "robots-txt": {
         "git": "https://github.com/gadicohen/meteor-robots.txt.git",
