@@ -25,7 +25,7 @@ Template.postSubmit.events({
         if (error.error === 302)
           Meteor.Router.to('postDetails', error.details);
       } else {
-        Router.go('/coderecipe/' + Posts.findOne(id).slug);
+        Router.go('newPosts');
       }
     });
   }

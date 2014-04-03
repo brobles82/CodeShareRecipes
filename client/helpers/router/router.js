@@ -24,11 +24,15 @@ var filters = {
     $('body').scrollTop(scrollTo);
     $('body').css("min-height", 0);
   },
-
-  isLoggedIn: function() {
-    if (!(Meteor.loggingIn() || Meteor.user())) {
-      this.render('login');
-      this.stop(); 
+  
+  isLoggedIn : function(pause) {
+    if (! Meteor.user()) {
+      if (Meteor.loggingIn())
+        this.render(this.loading);
+      else
+        this.render('login');
+      
+      pause();
     }
   },
 
@@ -41,10 +45,10 @@ var filters = {
 }
 
 if(Meteor.isClient){
-  Router.before(filters.nProgressHook, {except:[]});
-  Router.before(filters.isLoggedIn, {only: ['postSubmit']});
-  Router.after(filters.resetScroll, {except:[]});
-  Router.before(function() { clearErrors() });
+  Router.onBeforeAction (filters.nProgressHook, {except:[]});
+  Router.onBeforeAction (filters.isLoggedIn, {only: ['postSubmit']});
+  Router.onAfterAction (filters.resetScroll, {except:[]});
+  Router.onBeforeAction (function() { clearErrors() });
 }
 
 Router.map(function() {
