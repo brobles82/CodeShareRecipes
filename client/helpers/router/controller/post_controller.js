@@ -11,22 +11,20 @@ PostController = FastRender.RouteController.extend({
     return post = Posts.findOne({slug: this.params.slug});
   },
 
-  after: function() {
-    var post = Posts.findOne({slug: this.params.slug});
-
+  onAfterAction: function() {   
     if (!Meteor.isClient) {
       return;
     }
 
     SEO.set({
-      title: post.title + ' - CodeShareRecipes',
+      title: this.params.slug + ' - CodeShareRecipes',
       meta: {
-        'description': post.title +  ' - ' + post.message
+       'description': this.params.slug
       },
-        og: {
-          title: 'CodeShareRecipes',
-          'description': 'CodeShareRecipes - Code tutorial recipes, share your knowledge improve your learning'
-        }
-      });
-    }
+      og: {
+        title: 'CodeShareRecipes',
+        'description': 'CodeShareRecipes - Code tutorial recipes, share your knowledge improve your learning'
+      }
+    });
+  }
 });

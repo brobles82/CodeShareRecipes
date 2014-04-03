@@ -4,10 +4,10 @@
     "paginated-subscription": {},
     "urlify2": {},
     "iron-router": {},
-    "fast-render": {},
     "nprogress": {},
     "HTML5-History-API": {},
     "ms-seo": {},
-    "sitemaps": {}
+    "sitemaps": {},
+    "fast-render": {}
   }
 }

@@ -10,7 +10,6 @@ paginated-subscription
 urlify2
 spomet
 iron-router
-fast-render
 accounts-base
 accounts-password
 nprogress
@@ -18,3 +17,4 @@ HTML5-History-API
 ms-seo
 sitemaps
 spiderable
+fast-render
