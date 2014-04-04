@@ -15,7 +15,7 @@ Template.postEdit.events({
       preview = "";
     }
 
-    var tags = $('#tags').val().split(',');
+    var tags = $('.newtags').val().split(',');
 
     var postProperties = {
       title: $('#title').val(),
@@ -67,7 +67,7 @@ Template.postEdit.rendered = function () {
     minHeight: 100
   });
 
-  $('#tags').tagsInput({});
+  $('.newtags').tagsInput({});
 
   var converter = Markdown.getSanitizingConverter();
 
