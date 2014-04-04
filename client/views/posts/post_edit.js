@@ -5,24 +5,24 @@ Template.postEdit.helpers({
 });
 
 Template.postEdit.events({
-  'submit form': function(e) {
+  'click .send': function(e) {
     e.preventDefault();
 
     var currentPostId = post._id;
 
-    var preview = $(e.target).find('[name=jsbinlink]').val();
+    var preview = $('#jsbinlink').val();
     if(!preview.match(/^http:\/\/(?:.*?)\.?jsbin\.com\/.+$/)) {
       preview = "";
     }
 
-    var tags = $(e.target).find('[name=tags]').val().split(',');
+    var tags = $('#tags').val().split(',');
 
     var postProperties = {
-      title: $(e.target).find('[name=title]').val(),
-      tags: $(e.target).find('[name=tag]').val(),
-      message: $(e.target).find('[name=message]').val(),
+      title: $('#title').val(),
+      tags: tags,
+      message: $('.message').val(),
       jsbinlink: preview,
-      slug: URLify2($(e.target).find('[name=title]').val()),
+      slug: URLify2($('#title').val()),
       messageHeight: $('#wmd-input').css('height'),
       tags: tags
     }
@@ -49,11 +49,7 @@ Template.postEdit.events({
         throwError(error.reason);
       } else {
         reactiveVariable.setState(1);
-
-        //Update search        
-        Spomet.update(new Spomet.Findable(postProperties.title, 'title', currentPostId, 'post', new Date().getTime()));
-        Spomet.update(new Spomet.Findable(postProperties.message, 'message', currentPostId, 'post', new Date().getTime()));
-        Router.go('/coderecipe/'+ postProperties.slug);
+        Router.go('newPosts');
       }
     });
   },
