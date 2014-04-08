@@ -9,8 +9,8 @@
       "nprogress": {},
       "HTML5-History-API": {},
       "ms-seo": {},
-      "sitemaps": {},
-      "fast-render": {}
+      "fast-render": {},
+      "sitemaps": {}
     },
     "packages": {
       "spin": {
@@ -48,15 +48,15 @@
         "tag": "v0.2.6",
         "commit": "1a4ba31a1f6f29009d3941e9dd883829ff4e4b8b"
       },
-      "sitemaps": {
-        "git": "https://github.com/gadicohen/meteor-sitemaps.git",
-        "tag": "v0.0.15",
-        "commit": "d7425c4e1d01ec13869372faafbf4d11826fe277"
-      },
       "fast-render": {
         "git": "https://github.com/arunoda/meteor-fast-render.git",
-        "tag": "v0.1.23",
-        "commit": "933b9d8992f1c7004f9993b1b15dffe3bac672f3"
+        "tag": "v0.1.25",
+        "commit": "010c4ee25b48ab6a7373000be48f9cd4a8535880"
+      },
+      "sitemaps": {
+        "git": "https://github.com/gadicohen/meteor-sitemaps.git",
+        "tag": "v0.0.16",
+        "commit": "ed4d908c581071d1302b37c6ba77dbce55333dd3"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
