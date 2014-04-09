@@ -2,7 +2,7 @@
   <div class="container-fluid main_content">
     {{> errors}}
     {{#with post}}
-
+    
       <div class="row-fluid">
         <div class="span9">
 
@@ -60,18 +60,20 @@
               </form>
             </div>
 
-            <div class="span3">
-              <br>
-              <div class="row-fluid">
-                <div class="span12">
-                  <input type="submit" value="Submit" class="span6 btn btn-primary btn-large post_job apply_now scroll send"/>
-                  <br><br>
-                  <a style="background: #d9534f;" class="btn btn-large post_job apply_now scroll cancel">Cancel</a>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
+       
+        <div class="span3">
+          <br>
+          <div class="row-fluid">
+            <div class="span12">
+              <input type="submit" value="Submit" class="span6 btn btn-primary btn-large post_job apply_now scroll send"/>
+              <br><br>
+              <a style="background: #d9534f;" class="btn btn-large post_job apply_now scroll cancel">Cancel</a>
+            </div>
+          </div>
+        </div>        
       </div>  
     {{/with}}
   </div>
