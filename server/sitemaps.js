@@ -49,6 +49,6 @@ sitemaps.add('/sitemap.xml', function() {
   addStaticAdress({priority:0.6, adress: 'submit'});
   addStaticAdress({priority:0.4, adress: 'features'});
   addStaticAdress({priority:0.4, adress: 'about'});
+  addStaticAdress({priority:1, adress: '/'});
   return out;
 });
-

@@ -8,13 +8,12 @@ bootstrap
 spin
 paginated-subscription
 urlify2
-spomet
 iron-router
 accounts-base
 accounts-password
 nprogress
 HTML5-History-API
 ms-seo
-spiderable
 fast-render
 sitemaps
+spiderable
